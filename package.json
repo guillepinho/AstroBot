@@ -1,0 +1,32 @@
+{
+  "name": "botds",
+  "version": "1.0.0",
+  "description": "learning to bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/main.js",
+    "dev": "nodemon ./src/main.js"
+  },
+  "author": "GuillePinho",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.7.0",
+    "@discordjs/voice": "^0.8.0",
+    "@prisma/client": "^3.10.0",
+    "canvas": "^2.9.0",
+    "discord-player": "^5.2.2",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "ffmpeg-static": "^5.0.0",
+    "opusscript": "^0.0.8",
+    "wokcommands": "^1.5.3",
+    "yt-search": "^2.10.3",
+    "ytdl-core": "^4.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "nodemon": "^2.0.15",
+    "prisma": "^3.10.0"
+  }
+}

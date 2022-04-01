@@ -1,0 +1,15 @@
+{
+    "1": "Ontem mandaram um pull request desse SCRUM que causou a race condition da execução parelela de funções em multi-threads.",
+    "2": "A equipe de suporte precisa saber que a otimização de performance da renderização do DOM causou a race condition no parse retroativo do DOM.",
+    "3": "Dado o fluxo de dados atual, o módulo de recursão paralela complexificou o merge dos parametros passados em funções privadas.",
+    "4": "No último pull request, o gerenciador de dependências do frontend corrigiu o bug na interpolação dinâmica de strings.",
+    "5": "Desde ontem a noite um erro não identificado causou o bug da execução parelela de funções em multi-threads.",
+    "6": "A equipe de suporte precisa saber que um erro não identificado causou a race condition do nosso servidor de DNS.",
+    "7": "Desde ontem a noite a disposição dos elementos HTML deletou todas as entradas na estabilidade do protocolo de transferência de dados.",
+    "8": "Desde ontem a noite a compilação final do meu index.js facilitou a resolução de conflito do fluxo de dados de forma retroativa no server.",
+    "9": "Com o último commit, a otimização de performance da renderização do DOM causou a race condition na definição de variaveis com tipos estáticos.",
+    "10": "Explica pro PO que o deploy automatizado no Heroku deletou todas as entradas na definição de variaveis com tipos estáticos, isso tem que ser consertado.",
+    "11": "No último pull request, a normalização da data causou a race condition de compilação multi-plataforma de forma asincrona.",
+    "12": "A equipe de suporte precisa saber que o deploy automatizado no Heroku causou o bug do carregamento de JSON delimitado por linhas.",
+    "13": "Fala pro Prodd e pro Guille que o deploy automatizado no Heroku causou a race condition de uma configuração Webpack eficiente nos builds."
+}

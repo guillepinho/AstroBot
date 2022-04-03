@@ -16,6 +16,7 @@ const client = new Client({
         Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
         Intents.FLAGS.GUILD_PRESENCES,
         Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+        Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
         Intents.FLAGS.GUILD_VOICE_STATES
     ]
 });
@@ -112,6 +113,9 @@ client.on('messageCreate', (message) => {
     }
     else if (command === 'otako' || command === 'otaku' || command === 'otaco' || command === 'otacu') {
         client.commands.get('otako').execute(message);
+    }
+    else if (command === 'jkp') {
+        client.commands.get('jkp').execute(message, args);
     }
     // Comandos de Admin
     else if (command === 'ajudacons') {
@@ -228,10 +232,6 @@ client.on('messageCreate', (message) => {
             message.react('<:su_kekwut:735904285535240323>');
             message.reply({ embeds: [mudamessage] });
         }
-    }
-    else if (message.content.toLowerCase().includes('ahegao')) {
-        message.reply('https://images-ext-2.discordapp.net/external/YvbDt9PdnoJnzkkjbckgL-heRnDYbA92m5grtbnyEdo/https/media.discordapp.net/attachments/580810268368437261/670326673014521866/suahegao.png')
-        .then(msg => { setTimeout(() => msg.delete(), 3000); });
     }
     else if (message.content.toLowerCase() === 'defesa') {
         message.delete();

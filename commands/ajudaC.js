@@ -10,7 +10,6 @@ module.exports = {
         .setDescription('Bom, meu prefixo é o "**!**" e os meus comandos de admin são esses:')
         .setImage('https://media4.giphy.com/media/ZXBCFMGdx85ZVNal81/giphy.gif')
         .addFields(
-            { name: 'teste', value: 'Testa o último comando que o criador tá fuçando.' },
             { name: 'clear', value: 'Limpa a quantidade de mensagens indicadas.' },
             { name: 'kick', value: 'Chuta a bunda do salafrário para fora do server.' },
             { name: 'ban', value: 'Martela o indivíduo para outra dimensão. Sem volta.' },

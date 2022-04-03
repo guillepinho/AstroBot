@@ -7,8 +7,8 @@ module.exports = {
     description: 'adicionar aos JSON',
     execute(message, args) {
         if (!message.member.roles.cache.has('684013101787512883')) {
-            message.reply('Hmmm... vi aqui nos meus controles que você não tem esse poder, moço. <:su_panda2:697163015891583076>');
-            return;
+           message.reply('Hmmm... vi aqui nos meus controles que você não tem esse poder, moço. <:su_panda2:697163015891583076>');
+           return;
         }
 
         const comando = args[0];

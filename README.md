@@ -18,6 +18,7 @@ Bot do Survidor (https://discord.gg/jHhqrvPH) para praticar código e divertir a
 -Avatar  : Quer ver melhor o seu avatar? Ou do colega? Te ajudo com isso!   
 -Otako   : Otako fedido? Mando uma imagem para acabar com ele!   
 -Lero    : Tá achando que eu não sei de tudo? Sei sim, me dá um tópico e falo sobre ele.   
+-Jkp     : Se quiser desafiar seus amigos ao melhor JOKENPÔ de todos os tempos! hahahaha   
 
 ## Comandos de Administração
 

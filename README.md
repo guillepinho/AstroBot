@@ -19,6 +19,7 @@ Bot do Survidor (https://discord.gg/jHhqrvPH) para praticar código e divertir a
 -Otako   : Otako fedido? Mando uma imagem para acabar com ele!   
 -Lero    : Tá achando que eu não sei de tudo? Sei sim, me dá um tópico e falo sobre ele.   
 -Jkp     : Se quiser desafiar seus amigos ao melhor JOKENPÔ de todos os tempos! hahahaha   
+-Spy     : Joguinho do SPYFALL! Descubram o espião ou descubra o local!
 
 ## Comandos de Administração
 

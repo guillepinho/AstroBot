@@ -4,7 +4,7 @@ const { registerFont } = require('canvas');
 
 module.exports = {
     name: 'dado',
-    description: 'this is the dice command!',
+    description: 'comando do dado!',
     async execute(message, args) {
 
         if (!args[0]) {

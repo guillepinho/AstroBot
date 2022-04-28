@@ -17,9 +17,6 @@ module.exports = {
             'link': args[1],
         };
 
-        console.log(args[1]);
-        console.log(imagem);
-
         if (!comando || !args[1]) {
             message.reply('Xiii... sintaxe errada. Vamos lá, o certo é: !add "comando alvo" "gif/foto a adicionar". Lembre-se, o gif/foto deve ser um link, tá? O link da imagem e não do site, boco! <:su_panda2:697163015891583076>');
             return;

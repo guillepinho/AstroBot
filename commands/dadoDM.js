@@ -4,8 +4,9 @@ const { registerFont } = require('canvas');
 
 module.exports = {
     name: 'dadoDM',
-    description: 'this is the dice command!',
+    description: 'comando do dado para DM!',
     async execute(message, args) {
+        message.delete();
 
         if (!args[0]) {
             message.reply('ô... cê é tonto? quantos dados? quantos lados? Eu hein... acerta a sintaxe fazeno favo.');

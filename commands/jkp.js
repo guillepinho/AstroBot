@@ -58,7 +58,11 @@ module.exports = {
                         return;
                     }
                 });
-            });
+            })
+            .catch(error => {
+                message.channel.send(`A DM de <@!${desafiador}> está fechada para mim... Assim não conseguiremos jogar.`);
+            return;
+        });
 
         message.mentions.members.first().send(`Qual vai ser a sua jogada, <@!${alvo}>?`)
             .then(async (dmA) => {
@@ -92,7 +96,11 @@ module.exports = {
                         return;
                     }
                 });
-            });
+            })
+            .catch(error => {
+                message.channel.send(`A DM de <@!${alvo}> está fechada para mim... Assim não conseguiremos jogar.`);
+            return;
+        });
 
         setTimeout(function() {
             if (jogadaAlvo === '' || jogadaAuthor === '') {

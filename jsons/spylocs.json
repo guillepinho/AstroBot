@@ -1,0 +1,397 @@
+{
+    "locais": [
+        {
+            "nome": "Aeroporto",
+            "cargos": [
+                "Passageiro de Primeira Classe",
+                "Passageiro",
+                "Comissário de Bordo",
+                "Piloto",
+                "Co-piloto",
+                "Mecânico",
+                "Agente Federal Disfarçado",
+                "Controlador de Voo",
+                "Segurança",
+                "Bagageiro"
+            ]
+        }, {
+            "nome": "Banco",
+            "cargos": [
+                "Motorista de Carro Forte",
+                "Gerente",
+                "Consultor Financeiro",
+                "Cliente",
+                "Assaltante",
+                "Guarda",
+                "Caixa",
+                "Atendente Comercial",
+                "Estagiário",
+                "Assistente do Gerente"
+            ]
+        }, {
+            "nome": "Praia",
+            "cargos": [
+                "Surfista",
+                "Salva-Vidas",
+                "Trombadinha",
+                "Turista",
+                "Fotográfo",
+                "Sorveteiro",
+                "Ambulante",
+                "Garçom",
+                "Farofeiro",
+                "Nadador"
+            ]
+        }, {
+            "nome": "Teatro",
+            "cargos": [
+                "Recepcionista",
+                "Caixa",
+                "Cambista",
+                "Assistente de Palco",
+                "Espectador",
+                "Ator",
+                "Diretor",
+                "Figurante",
+                "Controlador de Luz",
+                "Crítico"
+            ]
+        }, {
+            "nome": "Cassino",
+            "cargos": [
+                "Bartender",
+                "Segurança",
+                "Gerente",
+                "Malandro",
+                "Apostador",
+                "Mesário/Dealer",
+                "Técnico de Máquinas",
+                "Caixa/Contabilista",
+                "Turista",
+                "Jogador de Poker"
+            ]
+        }, {
+            "nome": "Igreja",
+            "cargos": [
+                "Padre",
+                "Pedinte",
+                "Beato",
+                "Turista",
+                "Bispo",
+                "Coroinha",
+                "Fiel",
+                "Patrocinador da Igreja",
+                "Pintor",
+                "Escultor"
+            ]
+        }, {
+            "nome": "Circo",
+            "cargos": [
+                "Acrobata",
+                "Domador de Animais",
+                "Palhaço",
+                "Mágico",
+                "Engolidor de Espadas",
+                "Malabarista",
+                "Espectador",
+                "Criança",
+                "Vendedor de Pipoca",
+                "Contorcionista"
+            ]
+        }, {
+            "nome": "Festa da Firma",
+            "cargos": [
+                "Animador Contratado",
+                "Gerente",
+                "Dono da Empresa",
+                "Secretária",
+                "Contador",
+                "Jurídico",
+                "TI",
+                "Faxineira",
+                "Músico",
+                "Bêbado"
+            ]
+        }, {
+            "nome": "Cruzadas",
+            "cargos": [
+                "Monge",
+                "Prisioneiro Pagão",
+                "Servo",
+                "Bispo",
+                "Escudeiro",
+                "Arqueiro",
+                "Cavaleiro",
+                "Padre",
+                "Fiel",
+                "Líder da Cruzada"
+            ]
+        }, {
+            "nome": "Hotel",
+            "cargos": [
+                "Recepcionista",
+                "Segurança",
+                "Porteiro",
+                "Gerente",
+                "Camareira",
+                "Hóspede",
+                "Recreador",
+                "Agente de Turismo",
+                "Visitante",
+                "Garçom do Restaurante"
+            ]
+        }, {
+            "nome": "Embaixada",
+            "cargos": [
+                "Segurança",
+                "Embaixador",
+                "Ministro",
+                "Representante do Governo",
+                "Turista",
+                "Refugiado",
+                "Diplomata",
+                "Estrangeiro",
+                "Terrorista",
+                "Agente Federal"
+            ]
+        }, {
+            "nome": "Exercíto",
+            "cargos": [
+                "Desertor",
+                "Coronel",
+                "Capitão",
+                "Médico",
+                "Soldado",
+                "Atirador de Elite",
+                "Oficial",
+                "Operador do Tanque de Guerra",
+                "Mensageiro",
+                "Especialista em Explosivos"
+            ]
+        }, {
+            "nome": "Cruzeiro",
+            "cargos": [
+                "Cozinheiro",
+                "Capitão",
+                "Bartender",
+                "Músico",
+                "Garçom",
+                "Mecânico do Navio",
+                "Passageiro",
+                "Ganhador de Viagem Grátis",
+                "Recreador",
+                "Dono"
+            ]
+        }, {
+            "nome": "Trem",
+            "cargos": [
+                "Mecânico",
+                "Segurança",
+                "Comissário de Bordo",
+                "Passageiro",
+                "Turista",
+                "Engenheiro",
+                "Maquinista",
+                "Dorminhoco",
+                "Caixa",
+                "Ambulante"
+            ]
+        }, {
+            "nome": "Laboratório",
+            "cargos": [
+                "Cientista",
+                "Experimento Malsucedido",
+                "Cobaia",
+                "Estudante",
+                "Médico",
+                "Diretor Técnico",
+                "Auxiliar",
+                "Segurança",
+                "Patologista",
+                "Supervisor"
+            ]
+        }, {
+            "nome": "Estação Polar",
+            "cargos": [
+                "Médico",
+                "Geologista",
+                "Líder da Expedição",
+                "Biologista",
+                "Operador de Rádio",
+                "Hidrologista",
+                "Metereologista",
+                "Bioquímico",
+                "Piloto de Avião",
+                "Engenheiro"
+            ]
+        }, {
+            "nome": "Delegacia",
+            "cargos": [
+                "Delegado",
+                "Policial",
+                "Escrivão",
+                "Jornalista",
+                "Advogado",
+                "Bandido",
+                "Testemunha",
+                "Vítima",
+                "Servente",
+                "Suspeito"
+            ]
+        }, {
+            "nome": "Hospital",
+            "cargos": [
+                "Enfermeiro",
+                "Médico",
+                "Anestesista",
+                "Cirurgião",
+                "Paciente",
+                "Visita",
+                "Residente",
+                "Recepcionista",
+                "Segurança",
+                "Plantonista"
+            ]
+        }, {
+            "nome": "Oficina Mecânica",
+            "cargos": [
+                "Gerente",
+                "Borracheiro",
+                "Dono",
+                "Motorista",
+                "Operador de Lava-Rápido",
+                "Eletricista",
+                "Mecânico",
+                "Motociclista",
+                "Caixa",
+                "Ajudante"
+            ]
+        }, {
+            "nome": "Restaurante",
+            "cargos": [
+                "Músico",
+                "Cliente",
+                "Segurança",
+                "Host/Recepcionista",
+                "Chef de Cozinha",
+                "Sub-chefe",
+                "Crítico de Gastronomia",
+                "Garçom",
+                "Gerente",
+                "Cliente Folgado"
+            ]
+        }, {
+            "nome": "Escola",
+            "cargos": [
+                "Professor",
+                "Treinador",
+                "Estudante",
+                "Diretor",
+                "Segurança",
+                "Porteiro",
+                "Faxineiro",
+                "Merendeiro",
+                "Psicólogo",
+                "Coordenador"
+            ]
+        }, {
+            "nome": "Supermercado",
+            "cargos": [
+                "Cliente",
+                "Padeiro",
+                "Caixa",
+                "Faxineiro",
+                "Segurança",
+                "Repositor",
+                "Operador de Máquinas",
+                "Açougueiro",
+                "Pesquisador de Preços",
+                "Oficial do PROCON"
+            ]
+        }, {
+            "nome": "SPA",
+            "cargos": [
+                "Cliente",
+                "Massagista",
+                "Estilista",
+                "Manicure",
+                "Maquiador",
+                "Dermatologista",
+                "Esteticista",
+                "Cabeleireiro",
+                "Barbeador",
+                "Osteopata"
+            ]
+        }, {
+            "nome": "Cemitério",
+            "cargos": [
+                "Padre",
+                "Gótico",
+                "Ladrão de Covas",
+                "Poeta",
+                "Visitante",
+                "Porteiro",
+                "Morto",
+                "Vendedor de Flores",
+                "Coveiro",
+                "Vendedor de Caixão"
+            ]
+        }, {
+            "nome": "Obra",
+            "cargos": [
+                "Engenheiro",
+                "Pedreiro",
+                "Supervisor",
+                "Inspetor de Segurança",
+                "Operador de Máquina",
+                "Peão",
+                "Segurança",
+                "Porteiro",
+                "Encanador",
+                "Eletricista"
+            ]
+        }, {
+            "nome": "Posto de Gasolina",
+            "cargos": [
+                "Frentista",
+                "Vendedor",
+                "Cliente",
+                "Operador de Lava-jato",
+                "Caixa",
+                "Gerente",
+                "Borracheiro",
+                "Mecânico",
+                "Oficial do PROCON",
+                "Cliente da Conveniência"
+            ]
+        }, {
+            "nome": "Prisão",
+            "cargos": [
+                "Inocente",
+                "Operador de Segurança",
+                "Guarda",
+                "Visita",
+                "Advogado",
+                "Carcereiro",
+                "Faxineiro",
+                "Criminoso",
+                "Serial Killer",
+                "Diretor"
+            ]
+        }, {
+            "nome": "Casamento",
+            "cargos": [
+                "Porta-alianças",
+                "Noivo",
+                "Noiva",
+                "Padre",
+                "Fotógrafo",
+                "Padrinho",
+                "Madrinha",
+                "Penetra",
+                "Parente",
+                "Convidado"
+            ]
+        }
+    ]
+}

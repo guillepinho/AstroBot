@@ -66,95 +66,95 @@ client.on('messageCreate', (message) => {
     const command = args.shift().toLowerCase();
 
     // Comandos gerais
-    if (command === 'ping') {
-        client.commands.get('ping').execute(message);
-    }
-    else if (command === 'id') {
-        client.commands.get('id').execute(message, args);
-    }
-    else if (command === 'criador') {
-        client.commands.get('criador').execute(message);
-    }
-    else if (command === 'dado' || command === 'dice' || command === 'rola' || command === 'd') {
-        client.commands.get('dado').execute(message, args);
-    }
-    else if (command === 'oi') {
-        client.commands.get('saudacao').execute(message);
-    }
-    else if (command === 'ajuda') {
-        client.commands.get('ajuda').execute(message);
-    }
-    else if (command === 'setaniversario') {
-        client.commands.get('setAniversario').execute(message);
-    }
-    else if (command === 'dadodm' || command === 'ddm') {
-        client.commands.get('dadoDM').execute(message, args);
-        message.delete();
-    }
-    else if (command === 'fala') {
-        client.commands.get('fala').execute(message);
-        message.delete();
-    }
-    else if (command === 'abs' || command === 'hug') {
-        client.commands.get('abs').execute(message, args);
-    }
-    else if (command === 'bj' || command === 'kiss') {
-        client.commands.get('bj').execute(message, args);
-        message.delete();
-    }
-    else if (command === 'escolhe') {
-        client.commands.get('escolhe').execute(message, args);
-    }
-    else if (command === 'lero') {
-        client.commands.get('lero').execute(message, args);
-    }
-    else if (command === 'avatar') {
-        client.commands.get('avatar').execute(client, message, args);
-    }
-    else if (command === 'otako' || command === 'otaku' || command === 'otaco' || command === 'otacu') {
-        client.commands.get('otako').execute(message);
-    }
-    else if (command === 'jkp') {
-        client.commands.get('jkp').execute(message, args);
-    }
-    // Comandos de Admin
-    else if (command === 'ajudacons') {
-        client.commands.get('ajudacons').execute(message, args);
-    }
-    else if (command === 'clear' || command === 'limpa') {
-        client.commands.get('clear').execute(message, args);
-    }
-    else if (command === 'kick') {
-        client.commands.get('kick').execute(message, args);
-    }
-    else if (command === 'ban') {
-        client.commands.get('ban').execute(message, args);
-    }
-    else if (command === 'unban') {
-        client.commands.get('unban').execute(message, args);
-    }
-    else if (command === 'add') {
-        client.commands.get('add').execute(message, args);
-    }
-    // Comandos da Carteira
-    else if (command === 'carteira') {
-        message.reply('Não Juca, ainda não está funcionando esse comando...');
-    }
-    // Comandos de Música
-    // else if (command === 'play' || command === 'p') {
-    // client.commands.get('play').execute(message, args, client);
-    // }
-    // else if (command === 'skip') {
-    // client.commands.get('skip').execute(message, args);
-    // }
-    // else if (command === 'stop') {
-    // client.commands.get('stop').execute(message, args);
-    // }
-    // Error - comando não conhecido.
-    else {
-        message.reply('Opa, não conheço esse comando...');
+    switch (command) {
+        case 'ping':
+            client.commands.get('ping').execute(message, client);
+            break;
+        case 'id':
+            client.commands.get('ping').execute(message, client);
+            break;
+        case 'criador':
+            client.commands.get('criador').execute(message);
+            break;
+        case 'dado':
+        case 'd':
+            client.commands.get('dado').execute(message, args);
+            break;
+        case 'dadodm':
+        case 'ddm':
+            client.commands.get('dadoDM').execute(message, args);
+            break;
+        case 'oi':
+            client.commands.get('saudacao').execute(message);
+            break;
+        case 'ajuda':
+            client.commands.get('ajuda').execute(message);
+            break;
+        case 'fala':
+            client.commands.get('fala').execute(message);
+            break;
+        case 'abs':
+            client.commands.get('abs').execute(message, args);
+            break;
+        case 'bj':
+            client.commands.get('bj').execute(message, args);
+            break;
+        case 'escolhe':
+            client.commands.get('escolhe').execute(message, args);
+            break;
+        case 'lero':
+            client.commands.get('lero').execute(message, args);
+            break;
+        case 'avatar':
+            client.commands.get('avatar').execute(client, message, args);
+            break;
+        case 'otako':
+        case 'otaku':
+        case 'otaco':
+            client.commands.get('otako').execute(message);
+            break;
+        case 'jkp':
+            client.commands.get('jkp').execute(message, args);
+            break;
+        case 'spy':
+            client.commands.get('spy').execute(message, args);
+            break;
+        case 'spypara':
+            client.commands.get('spypara').execute(message);
+            break;
+        case 'spyconfig':
+            client.commands.get('spyconfig').execute(message, args);
+            break;
+        // Comandos de Admin
+        case 'ajudacons':
+            client.commands.get('ajudacons').execute(message, args);
+            break;
+        case 'clear':
+        case 'limpa':
+            client.commands.get('clear').execute(message, args);
+            break;
+        case 'kick':
+            client.commands.get('kick').execute(message, args);
+            break;
+        case 'ban':
+            client.commands.get('ban').execute(message, args);
+            break;
+        case 'unban':
+            client.commands.get('unban').execute(message, args);
+            break;
+        case 'add':
+            client.commands.get('add').execute(message, args);
+            break;
+        // Carteira
+        case 'carteira':
+            message.reply('Não Juca, ainda não está funcionando esse comando...');
+            break;
+        // Error - comando não conhecido.
+        default: message.reply('Opa, não conheço esse comando...');
+        break;
     }
 });
+
 
 // Reações e respostas a mensagens sem comandos
 client.on('messageCreate', (message) => {
@@ -179,7 +179,7 @@ client.on('messageCreate', (message) => {
         const randomValue = values[parseInt(Math.random() * values.length)];
         message.channel.send(randomValue);
     }
-    else if (message.content === message.content.toUpperCase() && message.content.length > 30)
+    else if (message.content === message.content.toUpperCase() && message.content.length > 40)
         if (message.content.startsWith('<@') && message.content.endsWith('>')) {
             return;
         }
@@ -246,7 +246,7 @@ client.on('messageCreate', (message) => {
     const match = palavras.filter(e => message.content.toLowerCase().includes(e));
     if (match.length > 0) {
         const random = parseInt(Math.random() * 10);
-        if (random <= 3) {
+        if (random <= 1) {
             message.reply(`Ôoooo ${message.author.username}, é com essa boca podre que cê beija seus peguete? <:su_todezoi:684780888261001324>`);
         }
     }

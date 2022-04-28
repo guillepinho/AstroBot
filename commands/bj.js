@@ -34,7 +34,7 @@ module.exports = {
             const bejoVolta = new MessageEmbed()
                 .setColor([45, 25, 52])
                 .setTitle('EEEEETA, arrumem um quarto, meteu a língua de volta!')
-                .setDescription(`${message.author.username}, receba um abraço de volta de ${alvo}`)
+                .setDescription(`${message.author.username}, receba um BEIJAÇO de volta de ${alvo}`)
                 .setImage(randomValue2);
 
             message.channel.send({ embeds: [bejo] })

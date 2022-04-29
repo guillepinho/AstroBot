@@ -5,10 +5,47 @@ const fs = require('fs');
 const config = fs.readFileSync('./jsons/spyconfig.json');
 const locations = require('../jsons/spylocs.json');
 
+var runTimer = Boolean;
+var rolando = Boolean;
+
 module.exports = {
     name: 'spy',
     description: 'joguinho do spyfall do astro',
     async execute(message, args) {
+        const jsonConfig = JSON.parse(config);
+
+        let tempo = jsonConfig.tempo;
+        const spy = jsonConfig.spy;
+        const tempoPartida = jsonConfig.tempo;
+
+        let interval;
+        let msgTimer;
+
+        async function timer(parametro) {
+            if (parametro === 1) {
+                msgTimer = await message.channel.send(`__Timer__: ${tempo} segundos`);
+                interval = setInterval(() => {
+                    runTimer = true;
+                    tempo -= 3;
+                    msgTimer.edit(`__Timer__: ${tempo} segundos`);
+                    if (tempo <= 0) {
+                        runTimer = false;
+                        clearInterval(interval);
+                        msgTimer.edit('**TEMPO ESGOTADO!**');
+                    }
+                }, 3000);
+                return;
+            }
+            if (parametro === 0) {
+                runTimer = false;
+                rolando = false;
+                clearInterval(interval);
+                msgTimer.edit('**JOGO ENCERRADO!**');
+                message.channel.send('**Spyfall foi encerrado**! Será que descobriram o 🕵️? Ou ele descobriu o local?');
+                return;
+            }
+        }
+
         if (args[0] === 'help' || args[0] === 'como') {
             const help = new MessageEmbed()
                 .setColor([45, 25, 52])
@@ -24,200 +61,170 @@ module.exports = {
                 .setImage('https://c.tenor.com/txDqgTLcIW0AAAAC/spy-spying.gif');
             message.channel.send({ embeds: [help] });
         }
-        else {
-            let filter;
-
-            const jsonConfig = JSON.parse(config);
-
-            let tempo = jsonConfig.tempo;
-            const spy = jsonConfig.spy;
-            const tempoPartida = jsonConfig.tempo;
-
-            var runTimer = Boolean;
-
-            let interval;
-            let msgTimer;
-
-            async function timer(parametro) {
-                if (parametro === 1) {
-                    msgTimer = await message.channel.send(`__Timer__: ${tempo} segundos`);
-                    interval = setInterval(() => {
-                        runTimer = true;
-                        tempo -= 3;
-                        msgTimer.edit(`__Timer__: ${tempo} segundos`);
-                        if (tempo <= 0) {
-                            runTimer = false;
-                            clearInterval(interval);
-                            msgTimer.edit('**TEMPO ESGOTADO!**');
-                        }
-                    }, 3000);
-                    return;
-                }
-                if (parametro === 0) {
-                    runTimer = false;
-                    clearInterval(interval);
-                    msgTimer.edit('**JOGO ENCERRADO!**');
-                    return;
-                }
+        else if (args[0] === 'iniciar') {
+            if (rolando == true) {
+                message.reply('Calma, moço, já tem um jogo rolando. Aguarde!');
             }
+            else {
+                rolando = true;
+                let filter;
 
-            const jogo = {
-                jogadores: []
-            };
+                const jogo = {
+                    jogadores: []
+                };
 
-            const chamaSpy = new MessageEmbed()
-                .setColor([45, 25, 52])
-                .setTitle('GAME TIIIME!')
-                .setDescription(`${message.author.username}, está convidando geral para um partidinha de **SPYFALL**, quem topa? Só reagir ao emoji do espião em 30 segundos, se não você tá fora, teje avisado!`)
-                .setImage('https://c.tenor.com/vhxaixvLUz4AAAAd/stalking-spying.gif')
-                .addFields({
-                    name: 'Como jogar?', value: 'Cada pessoa receberá um cargo relacionado à um local. Os espiões não sabem que local é esse e devem se misturar e se disfarçar, até descobrirem qual é o local. Os outros devem trabalhar em conjunto para expor quem é o espião, sem entregar qual o local que está.'
-                });
-
-            let msgLista = '__**Lista de jogadores**__:';
-
-            message.channel.send({ embeds: [chamaSpy] })
-                .then(async (msg) => {
-                    msg.react('🕵️');
-                    let contadorPessoas = 0;
-                    const lista = await message.channel.send(msgLista);
-                    let clear = false;
-
-                    filter = (reaction, user) => {
-                        return !user.bot;
-                    };
-
-                    const coletor = msg.createReactionCollector({
-                        filter,
-                        time: 1000 * 30,
-                        dispose: true
+                const chamaSpy = new MessageEmbed()
+                    .setColor([45, 25, 52])
+                    .setTitle('GAME TIIIME!')
+                    .setDescription(`${message.author.username}, está convidando geral para um partidinha de **SPYFALL**, quem topa? Só reagir ao emoji do espião em 30 segundos, se não você tá fora, teje avisado!`)
+                    .setImage('https://c.tenor.com/vhxaixvLUz4AAAAd/stalking-spying.gif')
+                    .addFields({
+                        name: 'Como jogar?', value: 'Cada pessoa receberá um cargo relacionado à um local. Os espiões não sabem que local é esse e devem se misturar e se disfarçar, até descobrirem qual é o local. Os outros devem trabalhar em conjunto para expor quem é o espião, sem entregar qual o local que está.'
                     });
 
-                    coletor.on('collect', (reaction, user) => {
-                        if (reaction.emoji.name === '🕵️') {
-                            contadorPessoas++;
-                            jogo.jogadores.push({
-                                id: user.id
-                            });
-                            msgLista = msgLista + `\n • <@!${user.id}>`;
-                            lista.edit(msgLista);
-                        }
-                    });
+                let msgLista = '__**Lista de jogadores**__:';
 
-                    coletor.on('remove', (reaction) => {
-                        if (reaction.emoji.name === '🕵️') {
-                            clear = true;
-                            message.channel.send('Alguém removeu a reação, para não confundir tudo, vou cancelar o jogo, ok?');
-                        }
-                    });
+                message.channel.send({ embeds: [chamaSpy] })
+                    .then(async (msg) => {
+                        msg.react('🕵️');
+                        let contadorPessoas = 0;
+                        const lista = await message.channel.send(msgLista);
+                        let clear = false;
 
-                    coletor.on('end', async (collected) => {
-                        if (clear == true) {
-                            return;
-                        }
-                        const local = locations.locais[Math.floor(Math.random() * (locations.locais.length + 1))];
+                        filter = (reaction, user) => {
+                            return !user.bot;
+                        };
 
-                        const actConfigs = new MessageEmbed()
-                            .setColor([45, 25, 52])
-                            .setTitle('Atuais configurações do Spyfall 🕵️')
-                            .setDescription('Essas são as atuais configurações do jogo que irá rolar!')
-                            .addFields(
-                                { name: 'Tempo de Jogo', value: `${tempoPartida} segundos.`, inline: true },
-                                { name: 'Qtd. de Espiões', value: `${spy}`, inline: true }
-                            );
-                        if (collected.size === 0) {
-                            message.channel.send('Má rapai... ninguém vai jogar? Oxe.');
-                            return;
-                        }
-                        if (contadorPessoas < 4) {
-                            message.channel.send('Legal, Legal... mas tem pouca gente para jogar. Melhor tentarmos de novo depois, tá? Procura mais gente! 🕵️');
-                            return;
-                        }
-                        else {
-                            message.channel.send('Ok, me parece que temos jogadores o suficiente!! Que comecem as espionagens! 🕵️')
-                            .then(msgOk => setTimeout(function() {
-                                msgOk.delete();
-                            }, 15000));
-                            message.channel.send({ embeds: [actConfigs] })
-                                .then(async msgC => {
-                                    setTimeout(function() {
-                                        msgC.delete();
-                                    }, 15000);
+                        const coletor = msg.createReactionCollector({
+                            filter,
+                            time: 1000 * 30,
+                            dispose: true
+                        });
 
-                                    const spies = jogo.jogadores[Math.floor(Math.random() * jogo.jogadores.length)];
-                                    spies.cargo = 'Espião';
-                                    spies.loc = 'Desconhecida';
-
-                                    for (let i = 0; i < jogo.jogadores.length; i++) {
-                                        if (jogo.jogadores[i].cargo !== 'Espião') {
-                                            jogo.jogadores[i].loc = local.nome;
-                                            jogo.jogadores[i].cargo = local.cargos[i];
-                                        }
-                                    }
-
-                                    const comeca = jogo.jogadores[Math.floor(Math.random() * jogo.jogadores.length)].id;
-
-                                    let listaLocais = '';
-
-                                    for (let j = 0; j < locations.locais.length; j++) {
-                                        listaLocais += '• ' + locations.locais[j].nome + '\t \t';
-                                        if (j > 0 && j % 4 === 0) {
-                                            listaLocais += '\n';
-                                        }
-                                    }
-
-                                    jogo.jogadores.forEach(jogador => {
-                                        message.client.users.fetch(jogador.id).then(usuario => {
-                                            usuario.send(`A localização é **${jogador.loc}**. Seu cargo é **${jogador.cargo}**. \n__A lista de locais disponíveis é a seguinte__:\n${listaLocais}`)
-                                                // eslint-disable-next-line no-unused-vars
-                                                .catch(error => {
-                                                    message.channel.send(`Aí ce complica... tem um zé ruela ai, não vou dizer quem é o <@!${jogador.id}>, que tem DM fechada, meu patrão... PÔ, COMO VAI JOGAR ASSIM CARA?`);
-                                                    return;
-                                                });
-                                        });
-                                    });
-
-                                    message.channel.send(`Quem começa o jogo é: **<@!${comeca}>**.`)
-                                        .then(msgComeça => setTimeout(function() {
-                                            msgComeça.delete();
-                                        }, 15000));
-
-                                    message.channel.send(`Pronto, todos já receberam seus cargos no PV, vou dar 15 segundos para vocês lerem tudo com calma e jájá começo o timer de ${tempo} segundos. O tempo iniciará __**assim**__ que essa mensagem for apagada.`)
-                                        .then(msgReady => setTimeout(function() {
-                                            msgReady.delete();
-                                        }, 15000));
-
-                                    setTimeout(function() {
-                                        timer(1);
-                                    }, 15000);
-
-                                    setTimeout(function() {
-                                        timer(0);
-                                    }, 30000);
+                        coletor.on('collect', (reaction, user) => {
+                            if (reaction.emoji.name === '🕵️') {
+                                contadorPessoas++;
+                                jogo.jogadores.push({
+                                    id: user.id
                                 });
-                        }
-                    });
+                                msgLista = msgLista + `\n • <@!${user.id}>`;
+                                lista.edit(msgLista);
+                            }
+                        });
 
-                    filter = m => m.content.includes('spycabo');
-                    const coletorFim = message.channel.createMessageCollector({
-                        filter,
-                        time: (tempoPartida * 1000 + 15000)
-                    });
+                        coletor.on('remove', (reaction) => {
+                            if (reaction.emoji.name === '🕵️') {
+                                clear = true;
+                                message.channel.send('Alguém removeu a reação, para não confundir tudo, vou cancelar o jogo, ok?');
+                            }
+                        });
 
-                    coletorFim.on('collect', m => {
-                        if (runTimer === false || runTimer === undefined) {
-                            m.reply('Êeeeh laia. Não tem jogo do spyfall rodando, seu tonto.');
-                            return;
-                        }
-                        if (runTimer == true) {
-                            timer(0);
-                        }
-                    });
+                        coletor.on('end', async (collected) => {
+                            if (clear == true) {
+                                rolando = false;
+                                return;
+                            }
+                            const local = locations.locais[Math.floor(Math.random() * (locations.locais.length + 1))];
 
-                    coletorFim.on('end', collected => {
-                        console.log(`Collected ${collected.size} items`);
+                            const actConfigs = new MessageEmbed()
+                                .setColor([45, 25, 52])
+                                .setTitle('Atuais configurações do Spyfall 🕵️')
+                                .setDescription('Essas são as atuais configurações do jogo que irá rolar!')
+                                .addFields(
+                                    { name: 'Tempo de Jogo', value: `${tempoPartida} segundos.`, inline: true },
+                                    { name: 'Qtd. de Espiões', value: `${spy}`, inline: true }
+                                );
+                            if (collected.size === 0) {
+                                message.channel.send('Má rapai... ninguém vai jogar? Oxe.');
+                                rolando = false;
+                                return;
+                            }
+                            if (contadorPessoas < 4) {
+                                rolando = false;
+                                message.channel.send('Legal, Legal... mas tem pouca gente para jogar. Melhor tentarmos de novo depois, tá? Procura mais gente! 🕵️');
+                                return;
+                            }
+                            else {
+                                message.channel.send('Ok, me parece que temos jogadores o suficiente!! Que comecem as espionagens! 🕵️')
+                                    .then(msgOk => setTimeout(function() {
+                                        msgOk.delete();
+                                    }, 15000));
+                                message.channel.send({ embeds: [actConfigs] })
+                                    .then(async msgC => {
+                                        setTimeout(function() {
+                                            msgC.delete();
+                                        }, 15000);
+
+                                        const spies = jogo.jogadores[Math.floor(Math.random() * jogo.jogadores.length)];
+                                        spies.cargo = 'Espião';
+                                        spies.loc = 'Desconhecida';
+
+                                        for (let i = 0; i < jogo.jogadores.length; i++) {
+                                            if (jogo.jogadores[i].cargo !== 'Espião') {
+                                                jogo.jogadores[i].loc = local.nome;
+                                                jogo.jogadores[i].cargo = local.cargos[i];
+                                            }
+                                        }
+
+                                        const comeca = jogo.jogadores[Math.floor(Math.random() * jogo.jogadores.length)].id;
+
+                                        let listaLocais = '';
+
+                                        for (let j = 0; j < locations.locais.length; j++) {
+                                            listaLocais += '• ' + locations.locais[j].nome + '\t \t';
+                                            if (j > 0 && j % 4 === 0) {
+                                                listaLocais += '\n';
+                                            }
+                                        }
+
+                                        jogo.jogadores.forEach(jogador => {
+                                            message.client.users.fetch(jogador.id).then(usuario => {
+                                                usuario.send(`A localização é **${jogador.loc}**. Seu cargo é **${jogador.cargo}**. \n__A lista de locais disponíveis é a seguinte__:\n${listaLocais}`)
+                                                    // eslint-disable-next-line no-unused-vars
+                                                    .catch(error => {
+                                                        message.channel.send(`Aí ce complica... tem um zé ruela ai, não vou dizer quem é o <@!${jogador.id}>, que tem DM fechada, meu patrão... PÔ, COMO VAI JOGAR ASSIM CARA?`);
+                                                        return;
+                                                    });
+                                            });
+                                        });
+
+                                        message.channel.send(`Quem começa o jogo é: **<@!${comeca}>**.`)
+                                            .then(msgComeça => setTimeout(function() {
+                                                msgComeça.delete();
+                                            }, 15000));
+
+                                        message.channel.send(`Pronto, todos já receberam seus cargos no PV, vou dar 15 segundos para vocês lerem tudo com calma e jájá começo o timer de ${tempo} segundos.`)
+                                            .then(msgReady => setTimeout(function() {
+                                                msgReady.delete();
+                                            }, 15000));
+
+                                        setTimeout(function() {
+                                            timer(1);
+                                        }, 15000);
+                                    });
+                            }
+                        });
+
+                        filter = m => m.content.includes('parar');
+                        const coletorFim = message.channel.createMessageCollector({
+                            filter,
+                            time: (600 * 1000),
+                        });
+
+                        coletorFim.on('collect', () => {
+                            if (runTimer === true) {
+                                timer(0);
+                                return;
+                            }
+                        });
                     });
-                });
+            }
+        }
+        else if (args[0] === 'parar') {
+            // console.log('fix it later');
+        }
+        else {
+            message.reply('... spy????');
         }
     }
 };

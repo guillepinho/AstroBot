@@ -237,6 +237,10 @@ client.on('messageCreate', (message) => {
         message.delete();
         message.channel.send('Em caso de investigação policial, eu declaro que não tenho envolvimento com este grupo e não sei como estou no mesmo, provavelmente fui inserido por terceiros, declaro que estou disposto a colaborar com as investigações e estou disposto a me apresentar a depoimento se necessário');
     }
+    else if (message.content.toLowerCase().includes('carros') && message.content.toLowerCase().includes('rio')) {
+        message.channel.send('NINGUÉM É OBRIGADO A GOSTAR DE CARROS OU DE RIO CARA, NA VERDADE, NÃO É OBRIGADO A GOSTAR DE NADA. VAI SE FUDE CARA.');
+        message.channel.send('https://c.tenor.com/B9GSTO11naAAAAAM/die-the-imbeciles.gif');
+    }
 });
 
 // Controle de bocas sujas

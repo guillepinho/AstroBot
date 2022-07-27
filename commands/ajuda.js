@@ -12,7 +12,7 @@ module.exports = {
       .addFields(
         { name: 'abs', value: 'Manda AQUELE abraço!' },
         { name: 'ajuda', value: 'Este próprio comando aqui ô, pra lhe ajudar.' },
-        { name: 'ajudaC', value: 'Comandos dos Consulheiros!' },
+        { name: 'ajudacons', value: 'Comandos dos Consulheiros!' },
         { name: 'avatar', value: 'Manda o avatar do usuário tageado, ou manda o seu, em foto, em alta definição, bonito, lindo.' },
         { name: 'bj', value: 'Manda um beijin molhado!' },
         { name: 'criador', value: 'Para saber quem meu deu a "luz"?' },

@@ -11,7 +11,7 @@
   "author": "GuillePinho",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.7.0",
+    "@discordjs/opus": "^0.8.0",
     "@discordjs/voice": "^0.8.0",
     "@prisma/client": "^3.10.0",
     "canvas": "^2.9.0",

@@ -1,11 +1,11 @@
 const { MessageEmbed } = require('discord.js');
+const abs = require('../jsons/abs.json');
 
 module.exports = {
   name: 'abs',
   description: 'manda aquele abraço pro colega',
   async execute(message, args) {
     const { author } = message;
-    const abs = require('../jsons/abs.json');
 
     if (args.length === 0) {
       message.reply('A sintaxe do comando é: _!abs "pessoinha" "razão"_.');
@@ -21,15 +21,15 @@ module.exports = {
       message.delete();
       const alvo = args.shift();
       const mensagem = args.join(' ');
-      const randomValue = abs[parseInt(Math.random() * abs.length)].link;
-      const randomValue2 = abs[parseInt(Math.random() * abs.length)].link;
+      const imgAbr = abs[parseInt(Math.random() * abs.length)].link;
+      const imgAbr2 = abs[parseInt(Math.random() * abs.length)].link;
       const emoji = '🤗';
 
       const abraco = new MessageEmbed()
         .setColor([45, 25, 52])
         .setTitle('Hoooooora do abraaaaciiiin!')
         .setDescription(`${alvo}, receba um abraço de ${author.username}`)
-        .setImage(randomValue)
+        .setImage(imgAbr)
         .addFields({
           name: 'E o motivo desse abracin totoso?', value: mensagem !== '' ? mensagem : 'Não precisa de motivo, só abracin totoso mesmo.'
         });
@@ -38,7 +38,7 @@ module.exports = {
         .setColor([45, 25, 52])
         .setTitle('Eeeee ele abraça de voltaaaaa!')
         .setDescription(`${author.username}, receba um abraço de volta de ${alvo}`)
-        .setImage(randomValue2)
+        .setImage(imgAbr2)
         .addFields({
           name: 'Ooown', value: 'Fofo, né?'
         });
@@ -49,7 +49,7 @@ module.exports = {
 
         const filter = (reaction, user) => {
           return reaction.emoji.name === '🤗' &&
-            // user.id === alvo.replace(/!|<|@|>/g, '') &&
+            user.id === alvo.replace(/!|<|@|>/g, '') &&
             !user.bot;
         };
 

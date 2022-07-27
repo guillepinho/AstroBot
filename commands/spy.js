@@ -14,9 +14,9 @@ module.exports = {
     async execute(message, args) {
         const jsonConfig = JSON.parse(config);
 
-        let tempo = jsonConfig.tempo;
-        const spy = jsonConfig.spy;
-        const tempoPartida = jsonConfig.tempo;
+        let { tempo } = jsonConfig;
+        const { spy } = jsonConfig;
+        const tempoPartida = tempo;
 
         let interval;
         let msgTimer;

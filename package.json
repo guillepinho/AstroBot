@@ -1,7 +1,7 @@
 {
-  "name": "botds",
+  "name": "astrobot",
   "version": "1.0.0",
-  "description": "learning to bot",
+  "description": "astrosurv",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,19 +11,15 @@
   "author": "GuillePinho",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.8.0",
-    "@discordjs/voice": "^0.8.0",
     "canvas": "^2.9.0",
     "discord-player": "^5.2.2",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "ffmpeg-static": "^5.0.0",
-    "opusscript": "^0.0.8",
     "wokcommands": "^1.5.3"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
-    "nodemon": "^2.0.15",
-    "prisma": "^3.10.0"
+    "nodemon": "^2.0.15"
   }
 }

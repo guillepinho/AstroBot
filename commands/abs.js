@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const abs = require('../jsons/abs.json');
+const TIME_REACT = 15* 1000;
 
 module.exports = {
   name: 'abs',
@@ -55,7 +56,7 @@ module.exports = {
       const coletor = await firstMsg.createReactionCollector({
         filter,
         max: 1,
-        time: 1000 * 15,
+        time: TIME_REACT,
       });
 
       await coletor.on('collect', () => {
@@ -63,7 +64,7 @@ module.exports = {
       });
     }
     catch (error) {
-      message.reply(error);
+      message.reply(error.message);
     }
   }
 };

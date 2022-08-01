@@ -13,7 +13,7 @@ module.exports = {
         .setDescription('Sou o bot do Survidor! Eu ainda estou em desenvolvimento, mas em breve vou poder entreter vocês!')
         .addFields({ name: 'Quer saber meu atual status de desenvolvimento?', value: 'No atual momento, tive um probleminha. ' + randomValue })
         .setImage('https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif')
-        .setFooter({ text: 'Imagens do Guille e do Prodd neste momento' });
+        .setFooter({ text: 'Imagens do Guille neste momento' });
 
         message.reply({ embeds: [rollEmbed] });
     }

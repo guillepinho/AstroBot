@@ -100,6 +100,9 @@ client.on('messageCreate', (message) => {
         case 'bj':
             client.commands.get('bj').execute(message, args);
             break;
+        case 'shake':
+            client.commands.get('shake').execute(message, args);
+            break;
         case 'escolhe':
             client.commands.get('escolhe').execute(message, args);
             break;
@@ -206,7 +209,7 @@ client.on('messageCreate', (message) => {
 
     else if (msgL.includes('muda muda')) {
         const muda = parseInt(Math.random() * 10);
-        
+
         const mudamessage = new MessageEmbed()
             .setTitle('Ouvi MUDA?')
             .setColor([45, 25, 52])

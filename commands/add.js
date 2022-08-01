@@ -40,7 +40,7 @@ module.exports = {
     }
 
     const comando = args[0];
-    const comandos = ['abs', 'otako', 'bj'];
+    const comandos = ['abs', 'otako', 'bj', 'shake'];
     const imagem = {
       'link': args[1],
     };

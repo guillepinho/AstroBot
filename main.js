@@ -46,6 +46,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+
 // Prefixo
 const prefix = '!';
 
@@ -151,67 +152,48 @@ client.on('messageCreate', (message) => {
             break;
         // Error - comando não conhecido.
         default: message.reply('Opa, não conheço esse comando...');
-        break;
+            break;
     }
 });
 
 
 // Reações e respostas a mensagens sem comandos
 client.on('messageCreate', (message) => {
-    if (message.author.bot || message.content.includes('@here') || message.content.includes('@everyone')) {
-        return;
-    }
-    else if (message.content.toLowerCase().includes('gostoso')) {
+    const msg = message.content;
+    const msgL = message.content.toLowerCase();
+
+    if (
+        message.author.bot ||
+        msg.includes('@here') ||
+        msg.includes('@everyone')
+    ) return;
+
+    else if (msgL.includes('gostoso')) {
         message.react('❤️');
     }
-    else if (message.content.toLowerCase().includes('gostosa')) {
+    else if (msgL.includes('gostosa')) {
         message.react('✋');
     }
-    else if (message.content.toLowerCase().includes('bom dia') || message.content.toLowerCase().includes('oi astro')) {
+
+    else if (msgL.includes('bom dia')) {
         const bomDia = require('./jsons/bomDia.json');
         const values = Object.values(bomDia);
         const randomValue = values[parseInt(Math.random() * values.length)];
         message.channel.send(randomValue);
     }
-    else if (message.content.toLowerCase().includes('né astro')) {
+
+    else if (msgL.includes('né astro')) {
         const neAstro = require('./jsons/neAstro.json');
         const values = Object.values(neAstro);
         const randomValue = values[parseInt(Math.random() * values.length)];
         message.channel.send(randomValue);
     }
-    else if (message.content === message.content.toUpperCase() && message.content.length > 40)
-        if (message.content.startsWith('<@') && message.content.endsWith('>')) {
-            return;
-        }
-        else {
-            message.channel.send(`${message.member} Pala de glita 😡`);
-        }
-    else if (message.author.id === '683490663920435226') {
-        const tonho = parseInt(Math.random() * 100);
-        if (tonho <= 2) {
-            message.channel.send('CALAAABOCAAAATONHOOO');
-        }
+
+    else if (msg === msg.toUpperCase() && msg.length > 40) {
+        message.channel.send(`${message.member} Pala de glita 😡`);
     }
-    else if (message.content === '<@!950741775142752306>' && !message.content.startsWith(prefix)) {
-        const imagens = require('./jsons/images.json');
-        const values = Object.values(imagens);
-        const randomValue = values[parseInt(Math.random() * values.length)];
-        if (message.author.id === '134687378521456641' || message.author.id === '232248550354845696') {
-            const embed = new MessageEmbed()
-                .setTitle('Criador, que alegria você por aqui 😍')
-                .setColor([45, 25, 52])
-                .setImage(randomValue);
-            message.reply({ embeds: [embed] });
-        }
-        else {
-            const embed = new MessageEmbed()
-                .setTitle(`Oii ${message.author.username} 😬`)
-                .setColor([45, 25, 52])
-                .setImage(randomValue);
-            message.reply({ embeds: [embed] });
-        }
-    }
-    else if (message.content.toLowerCase().includes('su') && (message.content.toLowerCase().includes('lenzi'))) {
+
+    else if (msgL.includes('su') && (msgL.includes('lenzi'))) {
         message.react('❤️');
         const sulenzi = new MessageEmbed()
             .setTitle('SU & LENZI?')
@@ -221,25 +203,17 @@ client.on('messageCreate', (message) => {
             .setFooter({ text: 'Que cê tá falando do casal mar fofo do survidor? aaah gut gut' });
         message.reply({ embeds: [sulenzi] });
     }
-    else if (message.content.toLowerCase().includes(' muda') || message.content.toLowerCase().includes('muda ')) {
+
+    else if (msgL.includes('muda muda')) {
         const muda = parseInt(Math.random() * 10);
+        
         const mudamessage = new MessageEmbed()
             .setTitle('Ouvi MUDA?')
             .setColor([45, 25, 52])
             .setImage('https://c.tenor.com/R5BaBITnM3UAAAAd/giorno-part5.gif')
             .setFooter({ text: 'MUDA MUDA MUDA MUDA MUDA MUDA MUDA MUDA MUDA MUDA' });
-        if (muda <= 4) {
-            message.react('<:su_kekwut:735904285535240323>');
-            message.reply({ embeds: [mudamessage] });
-        }
-    }
-    else if (message.content.toLowerCase() === 'defesa') {
-        message.delete();
-        message.channel.send('Em caso de investigação policial, eu declaro que não tenho envolvimento com este grupo e não sei como estou no mesmo, provavelmente fui inserido por terceiros, declaro que estou disposto a colaborar com as investigações e estou disposto a me apresentar a depoimento se necessário');
-    }
-    else if (message.content.toLowerCase().includes('carros') && message.content.toLowerCase().includes('rio')) {
-        message.channel.send('NINGUÉM É OBRIGADO A GOSTAR DE CARROS OU DE RIO CARA, NA VERDADE, NÃO É OBRIGADO A GOSTAR DE NADA. VAI SE FUDE CARA.');
-        message.channel.send('https://c.tenor.com/B9GSTO11naAAAAAM/die-the-imbeciles.gif');
+
+        if (muda <= 4) { message.reply({ embeds: [mudamessage] }); }
     }
 });
 
@@ -258,12 +232,13 @@ client.on('messageCreate', (message) => {
 
 // Dar um olá as pessoas novinhas
 client.on('guildMemberAdd', async member => {
-    member.roles.add(member.guild.roles.cache.find(role => role.id === '683883629964820595'));
-    member.roles.add(member.guild.roles.cache.find(role => role.id === '814614439764033548'));
-    member.roles.add(member.guild.roles.cache.find(role => role.id === '815376261056168006'));
-    member.roles.add(member.guild.roles.cache.find(role => role.id === '815377284931387464'));
-    member.roles.add(member.guild.roles.cache.find(role => role.id === '815376676099850251'));
-    member.roles.add(member.guild.roles.cache.find(role => role.id === '813811893457518642'));
+    const findRole = member.guild.roles.cache;
+    member.roles.add(findRole.find(role => role.id === '683883629964820595'));
+    member.roles.add(findRole.find(role => role.id === '815376261056168006'));
+    member.roles.add(findRole.find(role => role.id === '815377284931387464'));
+    member.roles.add(findRole.find(role => role.id === '815376676099850251'));
+    member.roles.add(findRole.find(role => role.id === '813811893457518642'));
+    member.roles.add(findRole.find(role => role.id === '814614439764033548'));
 
     const canal = member.guild.channels.cache.get('683797690185678911');
 
@@ -286,7 +261,7 @@ client.on('guildMemberAdd', async member => {
 // Dar xau aos vacilão
 client.on('guildMemberRemove', member => {
     const canal = member.guild.channels.cache.get('683797690185678911');
-    canal.send(`<@!${member.user.id}> Saiu do servidor, até mais! Volte sempre... Ou não, sei lá.`);
+    canal.send(`**${member.user.username}** saiu do servidor, até mais! Volte sempre... Ou não, sei lá.`);
 });
 
 // Auth link: https://discord.com/oauth2/authorize?client_id=950741775142752306&permissions=8&scope=bot

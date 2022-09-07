@@ -5,14 +5,13 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/main.js",
-    "dev": "nodemon ./src/main.js"
+    "start": "node ./main.js",
+    "dev": "nodemon ./main.js"
   },
   "author": "GuillePinho",
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.9.0",
-    "discord-player": "^5.2.2",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "ffmpeg-static": "^5.0.0",

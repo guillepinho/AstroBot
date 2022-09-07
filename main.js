@@ -2,7 +2,6 @@
 require('dotenv').config();
 // eslint-disable-next-line no-unused-vars
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
-const { Player } = require('discord-player');
 const Discord = require('discord.js');
 const fs = require('fs');
 
@@ -19,13 +18,6 @@ const client = new Client({
         Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
         Intents.FLAGS.GUILD_VOICE_STATES
     ]
-});
-
-client.player = new Player(client, {
-    ytdlOptions: {
-        quality: 'highestaudio',
-        highWaterMark: 1 << 25
-    }
 });
 
 // Login bot
@@ -45,7 +37,6 @@ for (const file of commandFiles) {
 
     client.commands.set(command.name, command);
 }
-
 
 // Prefixo
 const prefix = '!';

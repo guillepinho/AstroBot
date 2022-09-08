@@ -3,10 +3,10 @@ module.exports = {
     description: 'clear messages',
     async execute(message, args) {
 
-        // if (!message.member.roles.cache.has('684013101787512883')) {
-        //     message.reply('Hmmm... vi aqui nos meus controles que você não tem esse poder, moço. <:su_panda2:697163015891583076>');
-        //     return;
-        // }
+        if (!message.member.roles.cache.has('684013101787512883')) {
+            message.reply('Hmmm... vi aqui nos meus controles que você não tem esse poder, moço. <:su_panda2:697163015891583076>');
+            return;
+        }
 
         const numero = parseInt(args[0]);
 

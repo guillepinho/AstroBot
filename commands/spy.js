@@ -1,5 +1,3 @@
-/* eslint-disable no-inner-declarations */
-/* eslint-disable max-nested-callbacks */
 const { MessageEmbed } = require('discord.js');
 const fs = require('fs');
 const config = fs.readFileSync('./jsons/spyconfig.json');
@@ -22,7 +20,7 @@ module.exports = {
         let msgTimer;
 
         async function timer(parametro) {
-            if (parametro === 1) {
+            if (parametro) {
                 msgTimer = await message.channel.send(`__Timer__: ${tempo} segundos`);
                 interval = setInterval(() => {
                     runTimer = true;
@@ -199,7 +197,7 @@ module.exports = {
                                             }, 15000));
 
                                         setTimeout(function() {
-                                            timer(1);
+                                            timer(true);
                                         }, 15000);
                                     });
                             }
@@ -213,7 +211,7 @@ module.exports = {
 
                         coletorFim.on('collect', () => {
                             if (runTimer === true) {
-                                timer(0);
+                                timer();
                                 return;
                             }
                         });

@@ -23,7 +23,7 @@ module.exports = {
         let resultadoAntesPenBon = 0;
         let resultadoFinal = 0;
 
-        if (lados === 0 || lados === '') {
+        if (lados === '0' || lados === '') {
             message.reply('ô... cê é tonto? quantos dados? quantos lados? Eu hein... acerta a sintaxe fazeno favo.');
             return;
         }
@@ -68,43 +68,41 @@ module.exports = {
             const canvas = Canvas.createCanvas(50, 50);
             const ctx = canvas.getContext('2d');
             const dadoImg = await Canvas.loadImage(dadoPath);
-            let num = cadaDado;
             const attachmentArray = [];
 
-            for (var t = 0; t < resultadoDados.length; t++) {
-                num = resultadoDados[t];
+            resultadoDados.forEach((dado, index) => {
                 ctx.drawImage(dadoImg, 0, 0);
                 ctx.textAlign = 'center';
                 // Fonte de acordo com o dado
                 if (lados === '4') {
                     ctx.fillStyle = '#000000';
                     ctx.font = '30px "Mario"';
-                    ctx.fillText(num, 24, 40);
+                    ctx.fillText(dado, 24, 40);
                 }
                 else if (lados === '6' || lados === '2') {
                     ctx.fillStyle = '#000000';
                     ctx.font = '40px "Mario"';
-                    ctx.fillText(num, 24, 39);
+                    ctx.fillText(dado, 24, 39);
                 }
                 else if (lados === '8') {
                     ctx.fillStyle = '#000000';
                     ctx.font = '32px "Mario"';
-                    ctx.fillText(num, 26, 35);
+                    ctx.fillText(dado, 26, 35);
                 }
                 else if (lados === '10' || lados === '12') {
                     ctx.fillStyle = '#000000';
                     ctx.font = '28px "Mario"';
-                    ctx.fillText(num, 26, 33);
+                    ctx.fillText(dado, 26, 33);
                 }
                 else if (lados === '20') {
                     ctx.fillStyle = '#000000';
                     ctx.font = '24px "Mario"';
-                    ctx.fillText(num, 26, 33);
+                    ctx.fillText(dado, 26, 33);
                 }
 
-                const attachment = new MessageAttachment(canvas.toBuffer(), 'resultado' + t + '.png');
+                const attachment = new MessageAttachment(canvas.toBuffer(), 'resultado' + index + '.png');
                 attachmentArray.push(attachment);
-            }
+            });
 
             // Criando a mensagem de resultado
             const rollEmbed = new MessageEmbed()

@@ -5,7 +5,7 @@ module.exports = {
     description: 'tá indeciso? deixa que eu te ajudo',
     execute(message, args) {
         if (!args) {
-            message.reply('Opa, a sintaxe do jogo é a seguinte: !escolhe "opção 1" "opção 2" "...ppção 10". Você pode escolher quantas opções quiser!');
+            message.reply('Opa, a sintaxe do jogo é a seguinte: !escolhe "opção 1" "opção 2" "...opção 10". Você pode escolher quantas opções quiser!');
             return;
         }
         else if (args.length == 1) {

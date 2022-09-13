@@ -4,6 +4,7 @@ require('dotenv').config();
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 const fs = require('fs');
+const firebase = require('firebase');
 
 // Criando clients
 const client = new Client({
@@ -28,6 +29,11 @@ client.on('ready', () => {
     client.user.setActivity('você. Sou o astro! Digite !ajuda e veja meus comandos', { type: 'LISTENING' });
 });
 
+// Firebase Config
+const firebaseConfig = require('./firebaseconfig.json');
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
 // Commands Collection
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -42,7 +48,35 @@ for (const file of commandFiles) {
 const prefix = '!';
 
 // Comandos
-client.on('messageCreate', (message) => {
+client.on('messageCreate', async (message) => {
+    if (!message.content.startsWith(prefix) &&
+        message.channel.id === '954183997745934398' &&
+        !message.author.bot
+    ) {
+        database.goOnline();
+        const user = message.author.id;
+        const lastMessages = await message.channel.messages.fetch({ limit: 2 });
+        const previousMessage = lastMessages.last();
+        if (previousMessage.content !== message.content) {
+            try {
+                const request = await database.ref().child("carteira").child(user).get();
+                if (request.exists()) {
+                    const { money } = request.val()
+                    await database.ref(`/carteira/${user}`).set({
+                        money: money + 10,
+                    });
+                } else {
+                    await database.ref(`/carteira/${user}`).set({
+                        money: 0,
+                    });
+                }
+            } catch (e) {
+                message.reply(`Veja bem... deu um problema aqui, manda essa mensagem pro dev: ${e.message}`);
+            }
+        }
+        database.goOffline();
+    }
+
     if (
         !message.content.startsWith(prefix) ||
         message.author.bot ||
@@ -120,6 +154,10 @@ client.on('messageCreate', (message) => {
         case 'spyconfig':
             client.commands.get('spyconfig').execute(message, args);
             break;
+        // Carteira
+        case 'carteira':
+            client.commands.get('carteira').execute(message);
+            break;
         // Comandos de Admin
         case 'ajudacons':
             client.commands.get('ajudacons').execute(message, args);
@@ -139,10 +177,6 @@ client.on('messageCreate', (message) => {
             break;
         case 'add':
             client.commands.get('add').execute(message, args);
-            break;
-        // Carteira
-        case 'carteira':
-            message.reply('Não Juca, ainda não está funcionando esse comando...');
             break;
         // Error - comando não conhecido.
         default: message.reply('Opa, não conheço esse comando...');
@@ -213,6 +247,7 @@ client.on('messageCreate', (message) => {
 
 // Controle de bocas sujas
 const palavrao = require('./jsons/palavrao.json');
+const { log } = require('console');
 const palavras = Object.values(palavrao);
 client.on('messageCreate', (message) => {
     const match = palavras.filter(e => message.content.toLowerCase().includes(e));

@@ -1,6 +1,5 @@
 // Requisitos
 require('dotenv').config();
-// eslint-disable-next-line no-unused-vars
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 const fs = require('fs');
@@ -40,7 +39,6 @@ const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith(
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-
     client.commands.set(command.name, command);
 }
 
@@ -63,7 +61,7 @@ client.on('messageCreate', async (message) => {
                 if (request.exists()) {
                     const { money } = request.val()
                     await database.ref(`/carteira/${user}`).set({
-                        money: money + 10,
+                        money: money + 1,
                     });
                 } else {
                     await database.ref(`/carteira/${user}`).set({

@@ -52,6 +52,8 @@ client.on('messageCreate', async (message) => {
         !message.author.bot
     ) {
         database.goOnline();
+        // setTimeout(async () => {
+        // }, 100);
         const user = message.author.id;
         const lastMessages = await message.channel.messages.fetch({ limit: 2 });
         const previousMessage = lastMessages.last();
@@ -60,19 +62,20 @@ client.on('messageCreate', async (message) => {
                 const request = await database.ref().child("carteira").child(user).get();
                 if (request.exists()) {
                     const { money } = request.val()
-                    await database.ref(`/carteira/${user}`).set({
+                    database.ref(`/carteira/${user}`).set({
                         money: money + 1,
                     });
+                    database.goOffline();
                 } else {
-                    await database.ref(`/carteira/${user}`).set({
-                        money: 0,
+                    database.ref(`/carteira/${user}`).set({
+                        money: 1,
                     });
+                    database.goOffline();
                 }
             } catch (e) {
                 message.reply(`Veja bem... deu um problema aqui, manda essa mensagem pro dev: ${e.message}`);
             }
         }
-        database.goOffline();
     }
 
     if (

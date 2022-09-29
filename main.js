@@ -47,36 +47,34 @@ const prefix = '!';
 
 // Comandos
 client.on('messageCreate', async (message) => {
-    if (!message.content.startsWith(prefix) &&
-        message.channel.id === '954183997745934398' &&
-        !message.author.bot
-    ) {
-        database.goOnline();
-        // setTimeout(async () => {
-        // }, 100);
-        const user = message.author.id;
-        const lastMessages = await message.channel.messages.fetch({ limit: 2 });
-        const previousMessage = lastMessages.last();
-        if (previousMessage.content !== message.content) {
-            try {
-                const request = await database.ref().child("carteira").child(user).get();
-                if (request.exists()) {
-                    const { money } = request.val()
-                    database.ref(`/carteira/${user}`).set({
-                        money: money + 1,
-                    });
-                    database.goOffline();
-                } else {
-                    database.ref(`/carteira/${user}`).set({
-                        money: 1,
-                    });
-                    database.goOffline();
-                }
-            } catch (e) {
-                message.reply(`Veja bem... deu um problema aqui, manda essa mensagem pro dev: ${e.message}`);
-            }
-        }
-    }
+    // if (!message.content.startsWith(prefix) &&
+    //     message.channel.id === '954183997745934398' &&
+    //     !message.author.bot
+    // ) {
+    //     database.goOnline();
+    //     const user = message.author.id;
+    //     const lastMessages = await message.channel.messages.fetch({ limit: 2 });
+    //     const previousMessage = lastMessages.last();
+    //     if (previousMessage.content !== message.content) {
+    //         try {
+    //             const request = await database.ref().child("carteira").child(user).get();
+    //             if (request.exists()) {
+    //                 const { money } = request.val()
+    //                 database.ref(`/carteira/${user}`).set({
+    //                     money: money + 1,
+    //                 });
+    //                 database.goOffline();
+    //             } else {
+    //                 database.ref(`/carteira/${user}`).set({
+    //                     money: 1,
+    //                 });
+    //                 database.goOffline();
+    //             }
+    //         } catch (e) {
+    //             message.reply(`Veja bem... deu um problema aqui, manda essa mensagem pro dev: ${e.message}`);
+    //         }
+    //     }
+    // }
 
     if (
         !message.content.startsWith(prefix) ||
@@ -156,9 +154,9 @@ client.on('messageCreate', async (message) => {
             client.commands.get('spyconfig').execute(message, args);
             break;
         // Carteira
-        case 'carteira':
-            client.commands.get('carteira').execute(message);
-            break;
+        // case 'carteira':
+        //     client.commands.get('carteira').execute(message);
+        //     break;
         // Comandos de Admin
         case 'ajudacons':
             client.commands.get('ajudacons').execute(message, args);
@@ -185,23 +183,16 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-
 // Reações e respostas a mensagens sem comandos
 client.on('messageCreate', (message) => {
-    const msg = message.content;
     const msgL = message.content.toLowerCase();
 
     if (
-        message.author.bot ||
-        msg.includes('@here') ||
-        msg.includes('@everyone')
+        message.author.bot
     ) return;
 
-    else if (msgL.includes('gostoso')) {
+    else if (msgL.includes('gostoso') || msgL.includes('gostosa')) {
         message.react('❤️');
-    }
-    else if (msgL.includes('gostosa')) {
-        message.react('✋');
     }
 
     else if (msgL.includes('bom dia')) {
@@ -218,12 +209,9 @@ client.on('messageCreate', (message) => {
         message.channel.send(randomValue);
     }
 
-    else if (msg === msg.toUpperCase() && msg.length > 40) {
-        message.channel.send(`${message.member} Pala de glita 😡`);
-    }
-
     else if (msgL.includes('su') && (msgL.includes('lenzi'))) {
-        message.react('❤️');
+        const chances = parseInt(Math.random() * 10);
+
         const sulenzi = new MessageEmbed()
             .setTitle('SU & LENZI?')
             .setColor([45, 25, 52])
@@ -231,6 +219,11 @@ client.on('messageCreate', (message) => {
             .setImage('https://c.tenor.com/St8FpL2GUAUAAAAC/patrick-star-cute.gif')
             .setFooter({ text: 'Que cê tá falando do casal mar fofo do survidor? aaah gut gut' });
         message.reply({ embeds: [sulenzi] });
+
+        if (chances <= 2) {
+            message.reply({ embeds: [sulenzi] });
+            message.react('❤️');
+        }        
     }
 
     else if (msgL.includes('muda muda')) {
@@ -248,7 +241,6 @@ client.on('messageCreate', (message) => {
 
 // Controle de bocas sujas
 const palavrao = require('./jsons/palavrao.json');
-const { log } = require('console');
 const palavras = Object.values(palavrao);
 client.on('messageCreate', (message) => {
     const match = palavras.filter(e => message.content.toLowerCase().includes(e));

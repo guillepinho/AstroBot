@@ -218,7 +218,6 @@ client.on('messageCreate', (message) => {
             .setDescription('<:lovesu:956897671761780746><:lovexuxu:956897693542789140>')
             .setImage('https://c.tenor.com/St8FpL2GUAUAAAAC/patrick-star-cute.gif')
             .setFooter({ text: 'Que cê tá falando do casal mar fofo do survidor? aaah gut gut' });
-        message.reply({ embeds: [sulenzi] });
 
         if (chances <= 2) {
             message.reply({ embeds: [sulenzi] });

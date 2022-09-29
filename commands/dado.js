@@ -60,7 +60,9 @@ module.exports = {
         if (resultadoFinal != 0 && resultadoAntesPenBon != 0) {
 
             // Criando a imagem no Canvas
-            if (lados === '2' || lados === '4' || lados === '6' || lados === '8' || lados === '10' || lados === '12' || lados === '20') {
+            const arrayOfExistingSides = ['2', '4', '6', '8', '10', '12', '20'];
+            
+            if (arrayOfExistingSides.includes(lados)) {
                 imagemDeDado = true;
                 dadoPath = './pictures/d' + lados + '.png';
             }

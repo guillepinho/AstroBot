@@ -47,35 +47,6 @@ const prefix = '!';
 
 // Comandos
 client.on('messageCreate', async (message) => {
-    // if (!message.content.startsWith(prefix) &&
-    //     message.channel.id === '954183997745934398' &&
-    //     !message.author.bot
-    // ) {
-    //     database.goOnline();
-    //     const user = message.author.id;
-    //     const lastMessages = await message.channel.messages.fetch({ limit: 2 });
-    //     const previousMessage = lastMessages.last();
-    //     if (previousMessage.content !== message.content) {
-    //         try {
-    //             const request = await database.ref().child("carteira").child(user).get();
-    //             if (request.exists()) {
-    //                 const { money } = request.val()
-    //                 database.ref(`/carteira/${user}`).set({
-    //                     money: money + 1,
-    //                 });
-    //                 database.goOffline();
-    //             } else {
-    //                 database.ref(`/carteira/${user}`).set({
-    //                     money: 1,
-    //                 });
-    //                 database.goOffline();
-    //             }
-    //         } catch (e) {
-    //             message.reply(`Veja bem... deu um problema aqui, manda essa mensagem pro dev: ${e.message}`);
-    //         }
-    //     }
-    // }
-
     if (
         !message.content.startsWith(prefix) ||
         message.author.bot ||

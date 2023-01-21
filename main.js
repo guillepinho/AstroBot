@@ -263,7 +263,7 @@ const zeniReminder = new CronJob('0 9,12,15,18,21 * * *', async () => {
     if (guild) {
         const canal = guild.channels.cache.get('683802803206094885');
         try {
-            await canal.send('<@$1009085595542372352>, eaí, já comeu? :spacer2:');
+            await canal.send('<@1009085595542372352>, eaí, já comeu? <:spacer2:>');
         } catch (error) {
             console.log(error);
         }

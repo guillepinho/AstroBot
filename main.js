@@ -256,19 +256,4 @@ client.on('guildMemberRemove', member => {
     canal.send(`**${member.user.username}** saiu do servidor, até mais! Volte sempre... Ou não, sei lá.`);
 });
 
-const CronJob = require('cron').CronJob;
-const zeniReminder = new CronJob('0 9,12,15,18,21 * * *', async () => {
-    const guild = client.guilds.cache.get('683797689544081444');
-
-    if (guild) {
-        const canal = guild.channels.cache.get('683802803206094885');
-        try {
-            await canal.send('<@1009085595542372352>, eaí, já comeu? <:spacer2:>');
-        } catch (error) {
-            console.log(error);
-        }
-    }
-});
-zeniReminder.start();
-
 // Auth link: https://discord.com/oauth2/authorize?client_id=950741775142752306&permissions=8&scope=bot

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./main.js",
-    "dev": "nodemon ./main.js"
+    "dev": "nodemon ./main.js",
+    "zip": "zip -r astrobot commands jsons pictures discloud.config firegbaseconfig.json main.js package.json README.md settings.json .env"
   },
   "author": "GuillePinho",
   "license": "ISC",

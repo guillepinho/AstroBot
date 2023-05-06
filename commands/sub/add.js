@@ -3,8 +3,6 @@ const { QueryType, useMasterPlayer } = require('discord-player');
 module.exports = async (interaction, userVoiceChannel) => {
   const player = useMasterPlayer();
 
-  console.log(player);
-
   const isPlaylist = interaction.options.getBoolean('playlist');
   const url = interaction.options.getString('url');
 

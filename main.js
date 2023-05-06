@@ -25,7 +25,18 @@ const client = new Client({
 });
 
 // Configuração do áudio player ---------------------------------------------------------
-const player = Player.singleton(client);
+const player = Player.singleton(client, {
+  leaveOnEnd: true,
+  leaveOnEndCooldown: 300000, // 5 minutes
+  leaveOnStop: true,
+  leaveOnEmpty: true,
+  leaveOnEmptyCooldown: 30000, // 30 seconds
+  discordPlayer: {
+    ytdlOptions: {
+      quality: 'highestaudio',
+    },
+  },
+});
 player.extractors.loadDefault();
 
 // Commands Collection -------------------------- Configuração dos Comandos -------------

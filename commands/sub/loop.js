@@ -1,13 +1,13 @@
 const { QueueRepeatMode } = require('discord-player');
 const { EmbedBuilder } = require('@discordjs/builders');
-const astroEmbed = require('../../utils/DJAstroEmbed');
+const { color, titleDJEmbed } = require('../../utils/constants');
 
 module.exports = async (interaction, queue) => {
   const type = interaction.options.getInteger('tipo');
 
   const embed = new EmbedBuilder()
-    .setTitle(astroEmbed.title)
-    .setColor(astroEmbed.color);
+    .setTitle(titleDJEmbed)
+    .setColor(color);
 
   switch (type) {
     case QueueRepeatMode.TRACK:

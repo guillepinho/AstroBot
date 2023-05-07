@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require('discord.js');
-const color = require('../../utils/color');
+const { color } = require('../../utils/constants');
 
 module.exports = {
   name: Events.MessageCreate,

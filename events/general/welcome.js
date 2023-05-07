@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require('discord.js');
-const color = require('../../utils/color');
+const { color } = require('../../utils/constants');
 
 const rolesToAdd = ['683883629964820595', '815376261056168006', '815377284931387464', '815376676099850251', '813811893457518642', '814614439764033548'];
 

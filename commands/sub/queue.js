@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('@discordjs/builders');
-const astroEmbed = require('../../utils/DJAstroEmbed');
+const { color, titleDJEmbed } = require('../../utils/constants');
 
 module.exports = async (interaction, queue) => {
   const tracks = queue.tracks.toArray();
@@ -7,8 +7,8 @@ module.exports = async (interaction, queue) => {
   const { currentTrack } = queue;
 
   const embed = new EmbedBuilder()
-    .setTitle(astroEmbed.title)
-    .setColor(astroEmbed.color)
+    .setTitle(titleDJEmbed)
+    .setColor(color)
     .setDescription(`__Tocando agora__: ${currentTrack.author} - **${currentTrack.title}**`);
 
   nextTenTracks.map((track, index) => (`${index + 1}. ${track.author} - **${track.title}**`));

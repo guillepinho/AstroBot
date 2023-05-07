@@ -1,13 +1,13 @@
 const { EmbedBuilder } = require('@discordjs/builders');
-const astroEmbed = require('../../utils/DJAstroEmbed');
+const { color, titleDJEmbed } = require('../../utils/constants');
 
 module.exports = async (interaction, queue) => {
   const queued = queue.history.queue.tracks.data;
   const { currentTrack } = queue;
 
   const embed = new EmbedBuilder()
-    .setTitle(astroEmbed.title)
-    .setColor(astroEmbed.color)
+    .setTitle(titleDJEmbed)
+    .setColor(color)
     .setDescription(`Okok, entendi, não curtiu a música **${currentTrack.title}** e quer pular ela, né?`);
 
   queue.node.skip();

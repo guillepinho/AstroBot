@@ -1,10 +1,10 @@
 const { EmbedBuilder } = require('@discordjs/builders');
-const astroEmbed = require('../../utils/DJAstroEmbed');
+const { color, titleDJEmbed } = require('../../utils/constants');
 
 module.exports = async (interaction) => {
   const embed = new EmbedBuilder()
-    .setTitle(astroEmbed.title)
-    .setColor(astroEmbed.color)
+    .setTitle(titleDJEmbed)
+    .setColor(color)
     .setDescription('Aqui está a lista de comandos musicais (**/dj**) que eu txu-ru-binbos txu-ru-bonbos tuts tuts tuts:\n\u200b')
     .setThumbnail('https://media2.giphy.com/media/T7ukTzXQVmWqI/giphy.gif?cid=ecf05e47zmmsnc05j64hs7p14y9cu47ca6ffzhc91bej4oyi')
     .addFields(

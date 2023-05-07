@@ -6,7 +6,6 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('ban')
     .setDescription('Entrega o martelo do ban na cara de um sujeito salafrário')
-    .setDMPermission(true)
     .setDefaultMemberPermissions(PermissionFlagsBits.BAN_MEMBERS)
     .addUserOption((option) => option
       .setRequired(true)

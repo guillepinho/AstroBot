@@ -34,6 +34,8 @@ const player = Player.singleton(client, {
   discordPlayer: {
     ytdlOptions: {
       quality: 'highestaudio',
+      // eslint-disable-next-line no-bitwise
+      highWaterMark: 1 << 25,
     },
   },
 });

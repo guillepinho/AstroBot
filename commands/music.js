@@ -1,7 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder } = require('discord.js');
-const { QueryType } = require('discord-player');
+const { useQueue } = require('discord-player');
 const add = require('./sub/add');
+const pause = require('./sub/pause');
+const skip = require('./sub/skip');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -20,7 +21,13 @@ module.exports = {
         .setRequired(true)))
     .addSubcommand((subcommand) => subcommand
       .setName('pausar')
-      .setDescription('Pausa a música atual')),
+      .setDescription('Pausa a música atual'))
+    .addSubcommand((subcommand) => subcommand
+      .setName('continuar')
+      .setDescription('Continua a música atual'))
+    .addSubcommand((subcommand) => subcommand
+      .setName('pular')
+      .setDescription('Pula a música atual')),
   run: async ({ interaction }) => {
     await interaction.deferReply();
 
@@ -28,6 +35,13 @@ module.exports = {
     if (!userVoiceChannel) return interaction.editReply('Você precisa estar conectado a um canal de voz para usar esse comando.');
 
     if (interaction.options.getSubcommand() === 'adicionar') return add(interaction, userVoiceChannel);
+
+    const queue = useQueue(interaction.guildId);
+    if (!queue || !queue.isPlaying()) return interaction.editReply('O DJ está descansando, não enche. Me chame quando for pra tocar.');
+
+    if (interaction.options.getSubcommand() === 'pausar') return pause(interaction, queue);
+
+    if (interaction.options.getSubcommand() === 'pular') return skip(interaction, queue);
 
     return null;
   },

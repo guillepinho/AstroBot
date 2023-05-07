@@ -1,18 +1,23 @@
 const { QueueRepeatMode } = require('discord-player');
+const { EmbedBuilder } = require('@discordjs/builders');
 const astroEmbed = require('../../utils/DJAstroEmbed');
 
 module.exports = async (interaction, queue) => {
   const type = interaction.options.getInteger('tipo');
 
+  const embed = new EmbedBuilder()
+    .setTitle(astroEmbed.title)
+    .setColor(astroEmbed.color);
+
   switch (type) {
     case QueueRepeatMode.TRACK:
-      astroEmbed.setDescription('Looping da música atual ligado.');
+      embed.setDescription('Looping da música atual ligado.');
       break;
     case QueueRepeatMode.QUEUE:
-      astroEmbed.setDescription('Looping da lista inteira ligado.');
+      embed.setDescription('Looping da lista inteira ligado.');
       break;
     case QueueRepeatMode.OFF:
-      astroEmbed.setDescription('Looping desligado.');
+      embed.setDescription('Looping desligado.');
       break;
     default:
       return interaction.editReply('Tipo não permitido.');
@@ -20,5 +25,5 @@ module.exports = async (interaction, queue) => {
 
   queue.setRepeatMode(type);
 
-  return interaction.editReply({ embeds: [astroEmbed] });
+  return interaction.editReply({ embeds: [embed] });
 };

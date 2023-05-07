@@ -1,7 +1,11 @@
+const { EmbedBuilder } = require('@discordjs/builders');
 const astroEmbed = require('../../utils/DJAstroEmbed');
 
 module.exports = async (interaction) => {
-  astroEmbed.setDescription('Aqui está a lista de comandos musicais (**/dj**) que eu txu-ru-binbos txu-ru-bonbos tuts tuts tuts:\n\u200b')
+  const embed = new EmbedBuilder()
+    .setTitle(astroEmbed.title)
+    .setColor(astroEmbed.color)
+    .setDescription('Aqui está a lista de comandos musicais (**/dj**) que eu txu-ru-binbos txu-ru-bonbos tuts tuts tuts:\n\u200b')
     .setThumbnail('https://media2.giphy.com/media/T7ukTzXQVmWqI/giphy.gif?cid=ecf05e47zmmsnc05j64hs7p14y9cu47ca6ffzhc91bej4oyi')
     .addFields(
       { name: '/dj ajuda:', value: 'Mostra esta lista de comandos disponíveis para DJ.' },
@@ -15,5 +19,5 @@ module.exports = async (interaction) => {
       { name: '/dj fila:', value: 'Mostra a lista das próximas 10 músicas que estão na fila.' },
     );
 
-  return interaction.editReply({ embeds: [astroEmbed] });
+  return interaction.editReply({ embeds: [embed] });
 };

@@ -1,10 +1,14 @@
+const { EmbedBuilder } = require('@discordjs/builders');
 const astroEmbed = require('../../utils/DJAstroEmbed');
 
 module.exports = async (interaction, queue) => {
   queue.setRepeatMode(0);
   queue.delete();
 
-  astroEmbed.setDescription('Entendido, lista de reprodução parada e limpa!');
+  const embed = new EmbedBuilder()
+    .setTitle(astroEmbed.title)
+    .setColor(astroEmbed.color)
+    .setDescription('Entendido, lista de reprodução parada e limpa!');
 
-  return interaction.editReply({ embeds: [astroEmbed] });
+  return interaction.editReply({ embeds: [embed] });
 };

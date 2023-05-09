@@ -3,7 +3,7 @@ const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('clear')
+    .setName('limpar')
     .setDescription('Remove um número informado de mensagens')
     .setDefaultMemberPermissions(PermissionFlagsBits.MANAGE_MESSAGES)
     .addIntegerOption((option) => option

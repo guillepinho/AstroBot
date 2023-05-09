@@ -14,6 +14,7 @@ module.exports = {
         { name: '/ban', value: 'Bane um usuário do servidor' },
         { name: '/kick', value: 'Expulsa um usuário do servidor' },
         { name: '/unban', value: 'Desbane um usuário do servidor' },
+        { name: '/limpar', value: 'Remove um número informado de mensagens' },
       );
 
     return interaction.reply({ embeds: [embed], ephemeral: true });

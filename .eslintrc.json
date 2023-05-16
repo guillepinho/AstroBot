@@ -1,17 +1,22 @@
 {
+  "root": true,
   "env": {
-      "browser": true,
-      "es2020": true
+    "browser": false,
+    "commonjs": true,
+    "node": true,
+    "es2021": true
   },
-  "extends": "trybe-frontend",
-  "parser": "babel-eslint",
+  "extends": "airbnb-base",
+  "overrides": [],
   "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": true
-      },
-      "sourceType": "module"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  "plugins": [
-      "react"
-  ]
+  "rules": {
+    "no-console": "off",
+    "camelcase": "warn",
+    "max-len": "off",
+    "global-require": "off",
+    "import/no-dynamic-require": "off"
+  }
 }

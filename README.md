@@ -1,34 +1,85 @@
-# AstroBot
-![o astrobot](https://i.imgur.com/tFdW8mO.jpg)
-Bot do Survidor (https://discord.gg/jHhqrvPH) para praticar código e divertir a turma.
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<img src="https://i.imgur.com/tFdW8mO.jpg" width="80" alt="astrobot"  />
+<h2>AstroBot</h2>
+</div>
 
-## Comandos
-### Prefixo: !
 
--Oi      : Para saber mais sobre o AstroBot.   
--Ping    : Básico comando para ver se o bot está 'vivo'.   
--Criador : Caso você queira saber mais sobre os criadores, o biológico e o afetivo kkk.   
--Id      : Quer saber a sua Id do discord? Ou a de outro? Te ajudo a encontrar!   
--Dado    : Rola um dado, gerando uma imagem com o resultado.   
--DadoDM  : O mesmo, mas o dado é enviado para sua DM.   
--Fala    : Eu repito o que você quiser, fazendo parecer que quem disse fui eu. Eu não posso ser preso mesmo...   
--Abs     : Mande um abraço carinhoso pro coleguinha.   
--Bj      : Mande um beijo pro seu amorzin.   
--Escolhe : Tá em dúvida? Te ajudo a escolher. Me diz quais as opções e eu deixo o destino escolher para você.   
--Avatar  : Quer ver melhor o seu avatar? Ou do colega? Te ajudo com isso!   
--Otako   : Otako fedido? Mando uma imagem para acabar com ele!   
--Lero    : Tá achando que eu não sei de tudo? Sei sim, me dá um tópico e falo sobre ele.   
--Jkp     : Se quiser desafiar seus amigos ao melhor JOKENPÔ de todos os tempos! hahahaha   
--Spy     : Joguinho do SPYFALL! Descubram o espião ou descubra o local!
+## Sobre o projeto
 
-## Comandos de Administração
+O Astro é um bot de discord, feito para entreter e fazer a moderação do [Survidor](https://discord.gg/jHhqrvPH).
 
--Clear   : Limpa o número informado de mensagens no chat. Apago mais rápido que você!   
--Kick    : Chuta a bunda do salafrário para fora do servidor.   
--Ban     : Desce o martelo do ban, impedindo para sempre o rapaz de voltar a pisar no Survi.   
--Unban   : Se você desistir do ban, a gente libera o acesso por aqui.   
--Add     : Comando para adicionar novas imagens aos comandos abs, bj e otako.   
+Começou a ser desenvolvido com intuito de estudar e praticar Javascript em março de 2022, quando me preparava para fazer a transição de carreira para desenvolvimento de sistemas web.
 
-## Para quê e por quem?
+Aos poucos e após diversos commits, fui me divertindo e adicionando novas funções ao bot, tendo os membros do canal do [Survidor](https://discord.gg/jHhqrvPH) como clientes e proprietários do produto, que me passavam pedidos e feedbacks.
 
-O bot começou a ser desenvolvido como uma maneira de estudar e praticar Javascript por mim, no começo de março de 2022, após ter dado início à jornada da programação. Irei iniciar o curso da Turma 23 da Trybe no dia 20 de abril de 2022 e já estou praticando bastante para começar com o pé direito. Cada dia tenho me divertido mais e adicionado novas funções ao AstroBot, cujo objetivo, no fim, é justamente divertir a galera do Survi (https://discord.gg/jHhqrvPH). Chega mais para conhecer o pessoal de lá e conhecer esse bot simpático!
+Começou como uma brincadeira, mas com os conhecimentos acumulados o bot foi sendo aprimorado e atualizado, inclusive, trazendo refatorações para que o código fosse mais legível.
+
+Se ficou curioso para conhecer esse simpático bot melhor, é só entrar no [Survidor](https://discord.gg/jHhqrvPH)!
+
+
+### Tecnologias utilizadas
+
+* [![Node][Node.js]](https://nodejs.org/en)
+* [![Discord.js][Discord.js]](https://discord.js.org/)
+* [![discord-player][discord-player]](https://discord-player.js.org/)
+
+
+## Como rodar?
+### Pré-requesitos:
+Para rodar este bot, você precisa ter instalado as seguintes dependências na sua máquina:
+1. [Node.js v18.16 (LTS) - hydrogen](https://nodejs.org/en/blog/release/v18.16.0)
+2. [npm v9.5.1](https://www.npmjs.com/)
+3. [ffmpeg v6](https://ffmpeg.org/download.html)
+
+### Instalação
+1. Clone o repositório
+```sh
+git clone git@github.com:guillepinho/AstroBot.git
+```
+2. Crie um arquivo .env na raiz do projeto, com a seguinte configuração (.env.example):
+```env
+DISCORD_TOKEN=<O TOKEN DO SEU BOT>
+CLIENT_ID=<O ID DO SEU BOT>
+GUILD_ID=<O ID DO SEU SERVIDOR DO DISCORD>
+```
+3. Instale os pacotes
+```sh
+npm install
+```
+4. Rode o comando para iniciar a execução do bot em modo de desenvolvimento
+```sh
+npm run dev
+```
+5. Se tudo der certo, abra outro terminal e rode o seguinte para carregar os comandos do bot no discord, se não, verifique seu arquivo .env
+```sh
+npm run load
+```
+6. Pronto! Tudo está configurado. Você pode a partir de então iniciar o bot pelo terminal com o seguinte comando:
+```sh
+npm start
+```
+
+## Comandos do Bot
+
+<div style="display: flex; justify-content: center; align-items: flex-start;">
+<img src="./assets/comandos.png" alt="comandos"  />
+<img src="./assets/dj.png" alt="dj"  />
+</div>
+
+## Contribuições
+Caso tenha interesse em contribuir com este projeto, sinta-se à vontade! Qualquer sugestão, inspiração, ideias ou até mesmo melhorias na legibilidade do código são muito bem-vindas! Você pode me ajudar assim:
+
+1. Fork o repositório
+2. Crie uma branch, nomeando a feature ou fix (```git checkout -b feature/Spyfall```)
+3. Dê commit nas suas modificações (```git commit -m '(spyfall): configs iniciais'```)
+4. Faça o push para a branch (```git push -u origin feature/Spyfall```)
+5. Abra um Pull Request
+
+## Licença
+Este projeto é distribuído sob a licença MIT. Veja o arquivo ```LICENSE.txt``` para mais informações.
+
+
+<!-- MARDOWN LINKS * IMAGENS -->
+[Node.js]: https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=green
+[Discord.js]: https://img.shields.io/badge/discord.js-35495E?style=for-the-badge&logo=discord&logoColor=white
+[discord-player]: https://img.shields.io/badge/discord%20player-35495E?style=for-the-badge&logo=npm&logoColor=white

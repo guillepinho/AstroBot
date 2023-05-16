@@ -1,17 +1,20 @@
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-  name: 'avatar',
-  description: 'mostra o avatar do migo',
-  execute(client, message, args) {
-    const alvo = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
-    const avatar = alvo.avatarURL({ dynamic: true, format: 'png', size: 1024 });
-    
-    const send = new MessageEmbed()
-      .setColor([45, 25, 52])
-      .setTitle(`:camera_with_flash: ${alvo.username}`)
-      .setImage(avatar);
+  data: new SlashCommandBuilder()
+    .setName('avatar')
+    .setDescription('Mostra o avatar do usuário, se ninguém for selecionado, mostra o seu')
+    .addUserOption((option) => option
+      .setRequired(false)
+      .setName('usuário-alvo')
+      .setDescription('De quem você quer ver o avatar?')),
+  run: async ({ interaction }) => {
+    const target = interaction.options.getUser('usuário-alvo') || interaction.user;
 
-    message.channel.send({ embeds: [send] });
-  }
+    const embed = new EmbedBuilder()
+      .setTitle(`Avatar de ${target.username}`)
+      .setImage(target.displayAvatarURL({ dynamic: true, size: 4096 }));
+
+    await interaction.reply({ embeds: [embed] });
+  },
 };

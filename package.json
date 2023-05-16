@@ -1,24 +1,33 @@
 {
   "name": "astrobot",
-  "version": "1.0.0",
-  "description": "astrosurv",
+  "version": "2.0.0",
+  "description": "discord boy for friend's server",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./main.js",
     "dev": "nodemon ./main.js",
+    "load": "node ./main.js load",
     "zip": "zip -r astrobot commands jsons pictures discloud.config firegbaseconfig.json main.js package.json README.md settings.json .env"
   },
   "author": "GuillePinho",
   "license": "ISC",
   "dependencies": {
-    "canvas": "^2.9.0",
-    "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0",
-    "firebase": "^8.6.4"
+    "@discordjs/builders": "^1.6.3",
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/rest": "^1.7.1",
+    "@discordjs/voice": "^0.16.0",
+    "discord-api-types": "^0.37.41",
+    "discord-player": "^6.3.0",
+    "discord.js": "^14.10.2",
+    "dotenv": "^16.0.3",
+    "ffmpeg-static": "^5.1.0",
+    "ytdl-core": "^4.11.4"
   },
   "devDependencies": {
-    "eslint": "^8.10.0",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "nodemon": "^2.0.20"
   }
 }

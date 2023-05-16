@@ -17,7 +17,7 @@ module.exports = {
         { name: '/dj', value: 'Meu tocador de músicas! Use "/dj ajuda" para ver os comandos.' },
         { name: '/escolhe', value: 'Escolho uma opção aleatória dentre as que você me informar' },
         { name: '/falar', value: 'Falo alguma coisa no chat que você quiser' },
-        { name: '/help', value: 'Mostra os meus comandos disponíveis do bot.' },
+        { name: '/ajuda', value: 'Mostra os meus comandos disponíveis do bot.' },
         { name: '/sobre', value: 'Mostra informações sobre mim' },
         { name: '/ping', value: 'Para verificar se estou funcionando normalmente.' },
         { name: '/otaco', value: 'Manda o gif pro otaku troxa' },

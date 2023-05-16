@@ -5,6 +5,7 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { Player } = require('discord-player');
 const commandsLoader = require('./src/utils/commandsLoader');
 const musicPlaying = require('./src/events/music/musicPlaying');
+const playerError = require('./src/events/music/playerError');
 
 const LOAD_SLASH = process.argv[2] === 'load';
 
@@ -79,6 +80,7 @@ if (LOAD_SLASH) {
 
   // Music Listener
   musicPlaying();
+  playerError();
 
   // Login bot --------------------------------------------------------------------------
   client.login(process.env.DISCORD_TOKEN);

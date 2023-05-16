@@ -1,0 +1,13 @@
+version: "3"
+services:
+  bot:
+    build: .
+    container_name: astrobot
+    restart: always
+    tty: true
+    stdin_open: true
+    environment:
+      - DISCORD_TOKEN=OTUwNzQxNzc1MTQyNzUyMzA2.YidVRw.EhNyDlNKpfP1ytu94eA9aJ9xmMQ
+      - CLIENT_ID=950741775142752306
+      - GUILD_ID=683797689544081444
+      - DP_FORCE_YTDL_MOD=@distube/ytdl-core

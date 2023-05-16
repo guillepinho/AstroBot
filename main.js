@@ -3,8 +3,8 @@ require('dotenv').config();
 const fs = require('node:fs');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { Player } = require('discord-player');
-const commandsLoader = require('./utils/commandsLoader');
-const musicPlaying = require('./events/music/musicPlaying');
+const commandsLoader = require('./src/utils/commandsLoader');
+const musicPlaying = require('./src/events/music/musicPlaying');
 
 const LOAD_SLASH = process.argv[2] === 'load';
 
@@ -45,10 +45,10 @@ player.extractors.loadDefault();
 client.slashcommands = new Collection();
 
 const commands = [];
-const slashFiles = fs.readdirSync('./commands').filter((file) => file.endsWith('.js'));
+const slashFiles = fs.readdirSync('./src/commands').filter((file) => file.endsWith('.js'));
 
 slashFiles.forEach((cmd) => {
-  const commandToAdd = require(`./commands/${cmd}`);
+  const commandToAdd = require(`./src/commands/${cmd}`);
   client.slashcommands.set(commandToAdd.data.name, commandToAdd);
   if (LOAD_SLASH) commands.push(commandToAdd.data.toJSON());
 });
@@ -78,10 +78,10 @@ if (LOAD_SLASH) {
 
   // Bot Listeners ----------------------------------------------------------------------
   // Message Listeners
-  const eventFiles = fs.readdirSync('./events/general').filter((file) => file.endsWith('.js'));
+  const eventFiles = fs.readdirSync('./src/events/general').filter((file) => file.endsWith('.js'));
 
   eventFiles.forEach((file) => {
-    const event = require(`./events/general/${file}`);
+    const event = require(`./src/events/general/${file}`);
     client.on(event.name, (...args) => event.execute(...args));
   });
 

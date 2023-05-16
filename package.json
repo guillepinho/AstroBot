@@ -8,7 +8,7 @@
     "start": "node ./main.js",
     "dev": "nodemon ./main.js",
     "load": "node ./main.js load",
-    "zip": "zip -r astrobot commands jsons pictures discloud.config firegbaseconfig.json main.js package.json README.md settings.json .env"
+    "zip": "zip -r astrobot src assets discloud.config main.js package.json .env"
   },
   "author": "GuillePinho",
   "license": "ISC",

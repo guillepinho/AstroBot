@@ -1,7 +1,7 @@
 {
   "name": "astrobot",
-  "version": "1.0.0",
-  "description": "astrosurv",
+  "version": "2.0.0",
+  "description": "discord boy for friend's server",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

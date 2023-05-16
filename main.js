@@ -26,17 +26,10 @@ const client = new Client({
 
 // Configuração do áudio player ---------------------------------------------------------
 const player = Player.singleton(client, {
-  leaveOnEnd: true,
-  leaveOnEndCooldown: 300000, // 5 minutes
-  leaveOnStop: true,
-  leaveOnEmpty: true,
-  leaveOnEmptyCooldown: 30000, // 30 seconds
-  discordPlayer: {
-    ytdlOptions: {
-      quality: 'highestaudio',
-      // eslint-disable-next-line no-bitwise
-      highWaterMark: 1 << 25,
-    },
+  ytdlOptions: {
+    quality: 'highestaudio',
+    // eslint-disable-next-line no-bitwise
+    highWaterMark: 4194304,
   },
 });
 player.extractors.loadDefault();
@@ -54,7 +47,6 @@ slashFiles.forEach((cmd) => {
 });
 
 if (LOAD_SLASH) {
-  console.log('Fazendo deploy dos comandos');
   commandsLoader(commands);
 } else {
   // Bot Ready --------------------------------------------------------------------------

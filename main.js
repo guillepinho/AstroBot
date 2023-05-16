@@ -3,7 +3,7 @@ require('dotenv').config();
 const fs = require('node:fs');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { Player } = require('discord-player');
-const commandsLoader = require('./commandsLoader');
+const commandsLoader = require('./utils/commandsLoader');
 const musicPlaying = require('./events/music/musicPlaying');
 
 const LOAD_SLASH = process.argv[2] === 'load';

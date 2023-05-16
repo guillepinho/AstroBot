@@ -21,7 +21,7 @@ module.exports = {
         { name: '/sobre', value: 'Mostra informações sobre mim' },
         { name: '/ping', value: 'Para verificar se estou funcionando normalmente.' },
         { name: '/otaco', value: 'Manda o gif pro otaku troxa' },
-        { name: '/roll', value: 'Rola um dado para o chat ou apenas para você.' },
+        { name: '/dado', value: 'Rola um dado para o chat ou apenas para você.' },
       );
 
     return interaction.reply({ embeds: [embed], ephemeral: true });

@@ -6,9 +6,8 @@ module.exports = {
   execute(message) {
     if (message.author.bot) return null;
 
-    if (/(?![nN]é? astro)ne astro/i.test(message.content)) {
-      const rightAstroMessages = Object.values(rightAstro);
-      const randomValue = Math.floor(Math.random() * rightAstroMessages.length) + 1;
+    if (/(n[ée]? astro)/i.test(message.content)) {
+      const randomValue = Math.floor(Math.random() * rightAstro.length) + 1;
       return message.reply(rightAstro[randomValue]);
     }
     return null;

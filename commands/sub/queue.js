@@ -9,7 +9,8 @@ module.exports = async (interaction, queue) => {
   const embed = new EmbedBuilder()
     .setTitle(titleDJEmbed)
     .setColor(color)
-    .setDescription(`__Tocando agora__: ${currentTrack.author} - **${currentTrack.title}**`);
+    .setDescription(`__Tocando agora__: ${currentTrack.author} - **${currentTrack.title}**`)
+    .addFields({ name: 'Próximas músicas:', value: '\u200b' });
 
   nextTenTracks.map((track, index) => (`${index + 1}. ${track.author} - **${track.title}**`));
 
